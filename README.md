@@ -1,5 +1,5 @@
 # PCB-Assignment
-EEE3088F Micro-Mouse PCB Assignment\n
+EEE3088F Micro-Mouse PCB Assignment<br />
 A Micro-Mouse is a maze solving robot. For this project we ave focused on the hardwareof the robot, namely the poer and sensing subsystems.\n
 The Power Subsystem:\n
 It needs to run the motors and charge a battery.\n
