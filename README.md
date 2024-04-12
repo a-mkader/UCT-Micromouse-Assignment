@@ -8,12 +8,14 @@ Fortunately, the motherboard subsystem has been designed for us. The motherboard
 ![image](https://github.com/a-mkader/PCB-Assignment/assets/163734726/4fcd885a-d044-4313-a8e8-c641b3d626aa)<br />
 
 ## Power Subsystem
-This subsystem will be required to drive the two motors of the micromouse, as well as be responsible for charging the battery that will supply the micromouse.
+This subsystem will be required to drive the two motors of the micromouse, while being responsible for charging the battery that will supply the micromouse as well.
 ### Requirements:
------------------
-It needs to run the motors and charge a battery.<br />
-It will need to fit onto the pin headers on the motherboard.<br />
-It will need to be an appropriate size for the robot.<br />
+- Provide a minimum of 400mA to drive two motors (200mA per motor)
+* Charge the battery
+  * Sense the battery's state of charge
++ Switch ON/OFF
+- It will need to fit onto the pin headers on the motherboard
+* It will need to be an appropriate size for the robot <br />
 
 ## Sensing Subsystem
 It needs to detect objects.<br />
