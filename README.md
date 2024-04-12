@@ -22,8 +22,8 @@ A more detailed description of these requirements, as well as the pinouts for th
 ## Sensing Subsystem
 This subsystem will act as the robot's eyes. It will have to determine whether or not there is an obstruction in the way of the robot, and then send this information to the processor to take necessary action.
 ### Requirements:
-- Object detection 
- - Reliable way of communicating this information to the processor
+* Object detection 
+  * Reliable way of communicating this information to the processor
 * Power saving by means of switching
 + Be able to plug into the motherboard
 - Needs to be an appropriate size for the robot
