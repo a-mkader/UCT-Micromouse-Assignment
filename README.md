@@ -20,7 +20,12 @@ This subsystem will be required to drive the two motors of the micromouse while 
 A more detailed description of these requirements, as well as the pinouts for this subsystem, are listed [here](EEE3088F_2024_project_description_v11.pdf) on page 7.
 
 ## Sensing Subsystem
-It needs to detect objects.<br />
-It will need to fit onto the pin headers on the motherboard.<br />
-It will need to be an appropriate size for the robot.<br />
-<br />
+This subsystem will act as the robot's eyes. It will have to determine whether or not there is an obstruction in the way of the robot, and then send this information to the processor to take necessary action.
+### Requirements:
+- Object detection 
+ - Reliable way of communicating this information to the processor
+* Power saving by means of switching
++ Be able to plug into the motherboard
+- Needs to be an appropriate size for the robot
+  
+Once again, a more detailed description of what exactly this module needs to do as well as its pinouts, can be found [here](EEE3088F_2024_project_description_v11.pdf) on page 9.
