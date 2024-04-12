@@ -17,7 +17,7 @@ This subsystem will be required to drive the two motors of the micromouse while 
 - Be able to plug into the motherboard
 * Be an appropriate size for the robot <br />
 
-A more detailed description of these requirements, as well as the pinouts, are listed [here](EEE3088F_2024_project_description_v11.pdf) on page 7.
+A more detailed description of these requirements, as well as the pinouts for this subsystem, are listed [here](EEE3088F_2024_project_description_v11.pdf) on page 7.
 
 ## Sensing Subsystem
 It needs to detect objects.<br />
