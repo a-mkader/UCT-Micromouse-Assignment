@@ -9,7 +9,7 @@ Fortunately, the motherboard subsystem has been designed for us. The motherboard
 
 ## Power Subsystem
 This subsystem will be required to drive the two motors of the micromouse, as well as be responsible for charging the battery that will supply the micromouse.
-### <u>Requirements:<u>
+### <u>Requirements:</u>
 It needs to run the motors and charge a battery.<br />
 It will need to fit onto the pin headers on the motherboard.<br />
 It will need to be an appropriate size for the robot.<br />
