@@ -2516,7 +2516,7 @@
 		(descr "LED, diameter 5.0mm z-position of LED center 3.0mm, 2 pins, diameter 5.0mm z-position of LED center 3.0mm, 2 pins, diameter 5.0mm z-position of LED center 3.0mm, 2 pins, diameter 5.0mm z-position of LED center 9.0mm, 2 pins, diameter 5.0mm z-position of LED center 9.0mm, 2 pins, diameter 5.0mm z-position of LED center 9.0mm, 2 pins, diameter 5.0mm z-position of LED center 15.0mm, 2 pins")
 		(tags "LED diameter 5.0mm z-position of LED center 3.0mm 2 pins diameter 5.0mm z-position of LED center 3.0mm 2 pins diameter 5.0mm z-position of LED center 3.0mm 2 pins diameter 5.0mm z-position of LED center 9.0mm 2 pins diameter 5.0mm z-position of LED center 9.0mm 2 pins diameter 5.0mm z-position of LED center 9.0mm 2 pins diameter 5.0mm z-position of LED center 15.0mm 2 pins")
 		(property "Reference" "D9"
-			(at 1.27 -1.96 270)
+			(at 1.27 -1.96 -90)
 			(layer "F.SilkS")
 			(uuid "429f5e81-f64e-44ef-b36d-88d1d51f2388")
 			(effects
@@ -2527,7 +2527,7 @@
 			)
 		)
 		(property "Value" "PhotoDiode"
-			(at 1.27 10.93 270)
+			(at 1.27 10.93 -90)
 			(layer "F.Fab")
 			(uuid "b21c3e7c-411a-4969-be74-b70f5aa16a2f")
 			(effects
@@ -15464,6 +15464,72 @@
 			)
 			(justify left bottom)
 		)
+	)
+	(dimension
+		(type aligned)
+		(layer "F.SilkS")
+		(uuid "5b27d7db-52d0-43de-b01f-d37cfe932b13")
+		(pts
+			(xy 79.5 61.5) (xy 159.5 61.5)
+		)
+		(height 3.5)
+		(gr_text "80.0000 mm"
+			(at 119.5 63.9 0)
+			(layer "F.SilkS")
+			(uuid "5b27d7db-52d0-43de-b01f-d37cfe932b13")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 1)
+			(precision 4)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(extension_height 0.58642)
+			(extension_offset 0.5) keep_text_aligned)
+	)
+	(dimension
+		(type aligned)
+		(layer "F.SilkS")
+		(uuid "d27e3acd-fc56-4f9a-aae8-30d1792d6b4a")
+		(pts
+			(xy 159.5 41) (xy 159.5 61.5)
+		)
+		(height -9)
+		(gr_text "20.5000 mm"
+			(at 167.4 51.25 90)
+			(layer "F.SilkS")
+			(uuid "d27e3acd-fc56-4f9a-aae8-30d1792d6b4a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 1)
+			(precision 4)
+		)
+		(style
+			(thickness 0.1)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(extension_height 0.58642)
+			(extension_offset 0.5) keep_text_aligned)
 	)
 	(segment
 		(start 85.25 58.5)
