@@ -1,0 +1,918 @@
+ARM GAS  C:\Temp\cc1osqai.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"CustomWhile.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/CustomWhile.c"
+  20              		.section	.text.UnInterruptable,"ax",%progbits
+  21              		.align	1
+  22              		.global	UnInterruptable
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	UnInterruptable:
+  28              	.LFB909:
+   1:Core/Src/CustomWhile.c **** #include "main.h"
+   2:Core/Src/CustomWhile.c **** #include "CustomWhile.h"
+   3:Core/Src/CustomWhile.c **** #include "usb_device.h"
+   4:Core/Src/CustomWhile.c **** 
+   5:Core/Src/CustomWhile.c **** #include "math.h"
+   6:Core/Src/CustomWhile.c **** #include <string.h>
+   7:Core/Src/CustomWhile.c **** #include <stdio.h>
+   8:Core/Src/CustomWhile.c **** #include <stdbool.h>
+   9:Core/Src/CustomWhile.c **** #include <stdint.h>
+  10:Core/Src/CustomWhile.c **** #include "stm32l4xx_hal.h"
+  11:Core/Src/CustomWhile.c **** 
+  12:Core/Src/CustomWhile.c **** bool diag_ProSW[2];
+  13:Core/Src/CustomWhile.c **** bool diag_ProLED[3]; 
+  14:Core/Src/CustomWhile.c **** extern uint8_t IMUCheck;
+  15:Core/Src/CustomWhile.c **** extern float IMU_Accel[3]; 
+  16:Core/Src/CustomWhile.c **** extern float IMU_Gyro[3]; 
+  17:Core/Src/CustomWhile.c **** bool diag_IR_LEDs[8];
+  18:Core/Src/CustomWhile.c **** extern uint32_t IR_LED_TIMER; 
+  19:Core/Src/CustomWhile.c **** extern uint16_t ADC1s[9];
+  20:Core/Src/CustomWhile.c **** extern uint16_t ADC2s[9];
+  21:Core/Src/CustomWhile.c **** extern uint16_t ADC_H[9];
+  22:Core/Src/CustomWhile.c **** extern uint16_t ADC_L[9];
+  23:Core/Src/CustomWhile.c **** uint16_t diag_MOT_L[2] = {0,0};
+  24:Core/Src/CustomWhile.c **** uint16_t diag_MOT_R[2] = {0,0};
+  25:Core/Src/CustomWhile.c **** 
+  26:Core/Src/CustomWhile.c **** void UnInterruptable(void)
+  27:Core/Src/CustomWhile.c **** {
+  29              		.loc 1 27 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Temp\cc1osqai.s 			page 2
+
+
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  28:Core/Src/CustomWhile.c ****     uint32_t irq;
+  37              		.loc 1 28 5 view .LVU1
+  29:Core/Src/CustomWhile.c **** 
+  30:Core/Src/CustomWhile.c ****     // Loop through all possible IRQ numbers
+  31:Core/Src/CustomWhile.c ****     for (irq = 0; irq < 240; irq++)
+  38              		.loc 1 31 5 view .LVU2
+  39              	.LVL0:
+  40              		.loc 1 31 14 is_stmt 0 view .LVU3
+  41 0002 0024     		movs	r4, #0
+  42              		.loc 1 31 5 view .LVU4
+  43 0004 04E0     		b	.L2
+  44              	.LVL1:
+  45              	.L9:
+  46              		.loc 1 31 5 view .LVU5
+  47 0006 A4F11903 		sub	r3, r4, #25
+  48 000a 012B     		cmp	r3, #1
+  49 000c 0BD8     		bhi	.L5
+  50              	.L3:
+  51              		.loc 1 31 33 is_stmt 1 discriminator 2 view .LVU6
+  52 000e 0134     		adds	r4, r4, #1
+  53              	.LVL2:
+  54              	.L2:
+  55              		.loc 1 31 23 discriminator 1 view .LVU7
+  56 0010 EF2C     		cmp	r4, #239
+  57 0012 0CD8     		bhi	.L8
+  32:Core/Src/CustomWhile.c ****     {
+  33:Core/Src/CustomWhile.c ****         // Skip USB FS (usually USB_LP_CAN_RX0_IRQn for STM32F4)
+  34:Core/Src/CustomWhile.c ****         if (irq == OTG_FS_IRQn || irq == RCC_IRQn || irq == LPTIM1_IRQn)
+  58              		.loc 1 34 9 view .LVU8
+  59 0014 412C     		cmp	r4, #65
+  60 0016 FAD0     		beq	.L3
+  61 0018 03D8     		bhi	.L4
+  62 001a 052C     		cmp	r4, #5
+  63 001c F7D0     		beq	.L3
+  64 001e F2D2     		bcs	.L9
+  65 0020 01E0     		b	.L5
+  66              	.L4:
+  67 0022 432C     		cmp	r4, #67
+  68 0024 F3D0     		beq	.L3
+  69              	.L5:
+  35:Core/Src/CustomWhile.c ****         {
+  36:Core/Src/CustomWhile.c ****             continue;
+  37:Core/Src/CustomWhile.c ****         }
+  38:Core/Src/CustomWhile.c **** 
+  39:Core/Src/CustomWhile.c ****         // Skip TIM1 Update Interrupt and TIM1 Trigger and Commutation Interrupts
+  40:Core/Src/CustomWhile.c ****         if (irq == TIM1_UP_TIM16_IRQn || irq == TIM1_TRG_COM_TIM17_IRQn)
+  41:Core/Src/CustomWhile.c ****         {
+  42:Core/Src/CustomWhile.c ****             continue;
+  43:Core/Src/CustomWhile.c ****         }
+  44:Core/Src/CustomWhile.c **** 
+  45:Core/Src/CustomWhile.c ****         // Disable the interrupt
+  46:Core/Src/CustomWhile.c ****         HAL_NVIC_DisableIRQ((IRQn_Type)irq);
+ARM GAS  C:\Temp\cc1osqai.s 			page 3
+
+
+  70              		.loc 1 46 9 view .LVU9
+  71 0026 60B2     		sxtb	r0, r4
+  72 0028 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+  73              	.LVL3:
+  74 002c EFE7     		b	.L3
+  75              	.L8:
+  47:Core/Src/CustomWhile.c ****     }
+  48:Core/Src/CustomWhile.c **** }
+  76              		.loc 1 48 1 is_stmt 0 view .LVU10
+  77 002e 10BD     		pop	{r4, pc}
+  78              		.loc 1 48 1 view .LVU11
+  79              		.cfi_endproc
+  80              	.LFE909:
+  82              		.section	.rodata.CustomWhile.str1.4,"aMS",%progbits,1
+  83              		.align	2
+  84              	.LC0:
+  85 0000 4A4A4100 		.ascii	"JJA\000"
+  86              		.align	2
+  87              	.LC1:
+  88 0004 33303939 		.ascii	"3099\000"
+  88      00
+  89              		.section	.text.CustomWhile,"ax",%progbits
+  90              		.align	1
+  91              		.global	CustomWhile
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  96              	CustomWhile:
+  97              	.LFB910:
+  49:Core/Src/CustomWhile.c **** 
+  50:Core/Src/CustomWhile.c **** void CustomWhile(void){
+  98              		.loc 1 50 23 is_stmt 1 view -0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 103              		.cfi_def_cfa_offset 32
+ 104              		.cfi_offset 3, -32
+ 105              		.cfi_offset 4, -28
+ 106              		.cfi_offset 5, -24
+ 107              		.cfi_offset 6, -20
+ 108              		.cfi_offset 7, -16
+ 109              		.cfi_offset 8, -12
+ 110              		.cfi_offset 9, -8
+ 111              		.cfi_offset 14, -4
+  51:Core/Src/CustomWhile.c ****     
+  52:Core/Src/CustomWhile.c **** 
+  53:Core/Src/CustomWhile.c **** 
+  54:Core/Src/CustomWhile.c ****     uint16_t header = "JJA"; //seemed unique enough
+ 112              		.loc 1 54 5 view .LVU13
+ 113              		.loc 1 54 14 is_stmt 0 view .LVU14
+ 114 0004 704D     		ldr	r5, .L26
+ 115              	.LVL4:
+  55:Core/Src/CustomWhile.c ****     uint16_t terminator = "3099"; //seemed unique enough
+ 116              		.loc 1 55 5 is_stmt 1 view .LVU15
+ 117              		.loc 1 55 14 is_stmt 0 view .LVU16
+ 118 0006 714C     		ldr	r4, .L26+4
+ARM GAS  C:\Temp\cc1osqai.s 			page 4
+
+
+ 119              	.LVL5:
+  56:Core/Src/CustomWhile.c **** 
+  57:Core/Src/CustomWhile.c ****     //SIMULINK BYTE UNPACKING AND DEMUXING MUST MATCH THIS
+  58:Core/Src/CustomWhile.c **** 
+  59:Core/Src/CustomWhile.c ****     diag_ProSW[0] = HAL_GPIO_ReadPin(SW1_GPIO_Port,SW1_Pin);
+ 120              		.loc 1 59 5 is_stmt 1 view .LVU17
+ 121              		.loc 1 59 21 is_stmt 0 view .LVU18
+ 122 0008 714F     		ldr	r7, .L26+8
+ 123 000a 4021     		movs	r1, #64
+ 124 000c 3846     		mov	r0, r7
+ 125 000e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 126              	.LVL6:
+ 127 0012 0038     		subs	r0, r0, #0
+ 128 0014 18BF     		it	ne
+ 129 0016 0120     		movne	r0, #1
+ 130              		.loc 1 59 19 view .LVU19
+ 131 0018 6E4E     		ldr	r6, .L26+12
+ 132 001a 3070     		strb	r0, [r6]
+  60:Core/Src/CustomWhile.c ****     diag_ProSW[1] = HAL_GPIO_ReadPin(SW2_GPIO_Port,SW2_Pin);
+ 133              		.loc 1 60 5 is_stmt 1 view .LVU20
+ 134              		.loc 1 60 21 is_stmt 0 view .LVU21
+ 135 001c DFF8E891 		ldr	r9, .L26+64
+ 136 0020 0421     		movs	r1, #4
+ 137 0022 4846     		mov	r0, r9
+ 138 0024 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 139              	.LVL7:
+ 140 0028 0038     		subs	r0, r0, #0
+ 141 002a 18BF     		it	ne
+ 142 002c 0120     		movne	r0, #1
+ 143              		.loc 1 60 19 view .LVU22
+ 144 002e 7070     		strb	r0, [r6, #1]
+  61:Core/Src/CustomWhile.c **** 
+  62:Core/Src/CustomWhile.c ****     diag_ProLED[0] = HAL_GPIO_ReadPin(LED0_GPIO_Port,LED0_Pin);
+ 145              		.loc 1 62 5 is_stmt 1 view .LVU23
+ 146              		.loc 1 62 22 is_stmt 0 view .LVU24
+ 147 0030 DFF8B881 		ldr	r8, .L26+36
+ 148 0034 4FF40051 		mov	r1, #8192
+ 149 0038 4046     		mov	r0, r8
+ 150 003a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 151              	.LVL8:
+ 152 003e 0038     		subs	r0, r0, #0
+ 153 0040 18BF     		it	ne
+ 154 0042 0120     		movne	r0, #1
+ 155              		.loc 1 62 20 view .LVU25
+ 156 0044 644E     		ldr	r6, .L26+16
+ 157 0046 3070     		strb	r0, [r6]
+  63:Core/Src/CustomWhile.c ****     diag_ProLED[1] = HAL_GPIO_ReadPin(LED1_GPIO_Port,LED1_Pin);
+ 158              		.loc 1 63 5 is_stmt 1 view .LVU26
+ 159              		.loc 1 63 22 is_stmt 0 view .LVU27
+ 160 0048 4FF48041 		mov	r1, #16384
+ 161 004c 4046     		mov	r0, r8
+ 162 004e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 163              	.LVL9:
+ 164 0052 0038     		subs	r0, r0, #0
+ 165 0054 18BF     		it	ne
+ 166 0056 0120     		movne	r0, #1
+ 167              		.loc 1 63 20 view .LVU28
+ARM GAS  C:\Temp\cc1osqai.s 			page 5
+
+
+ 168 0058 7070     		strb	r0, [r6, #1]
+  64:Core/Src/CustomWhile.c ****     diag_ProLED[2] = HAL_GPIO_ReadPin(LED2_GPIO_Port,LED2_Pin);
+ 169              		.loc 1 64 5 is_stmt 1 view .LVU29
+ 170              		.loc 1 64 22 is_stmt 0 view .LVU30
+ 171 005a 4FF40041 		mov	r1, #32768
+ 172 005e 4046     		mov	r0, r8
+ 173 0060 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 174              	.LVL10:
+ 175 0064 0038     		subs	r0, r0, #0
+ 176 0066 18BF     		it	ne
+ 177 0068 0120     		movne	r0, #1
+ 178              		.loc 1 64 20 view .LVU31
+ 179 006a B070     		strb	r0, [r6, #2]
+  65:Core/Src/CustomWhile.c **** 
+  66:Core/Src/CustomWhile.c ****     diag_IR_LEDs[0] = HAL_GPIO_ReadPin(LED_MOT_LS_GPIO_Port,LED_MOT_LS_Pin);
+ 180              		.loc 1 66 5 is_stmt 1 view .LVU32
+ 181              		.loc 1 66 23 is_stmt 0 view .LVU33
+ 182 006c 4FF48051 		mov	r1, #4096
+ 183 0070 4846     		mov	r0, r9
+ 184 0072 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 185              	.LVL11:
+ 186 0076 0038     		subs	r0, r0, #0
+ 187 0078 18BF     		it	ne
+ 188 007a 0120     		movne	r0, #1
+ 189              		.loc 1 66 21 view .LVU34
+ 190 007c 574E     		ldr	r6, .L26+20
+ 191 007e 3070     		strb	r0, [r6]
+  67:Core/Src/CustomWhile.c ****     diag_IR_LEDs[1] = HAL_GPIO_ReadPin(LED_FWD_LS_GPIO_Port,LED_FWD_LS_Pin);
+ 192              		.loc 1 67 5 is_stmt 1 view .LVU35
+ 193              		.loc 1 67 23 is_stmt 0 view .LVU36
+ 194 0080 4FF48071 		mov	r1, #256
+ 195 0084 3846     		mov	r0, r7
+ 196 0086 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 197              	.LVL12:
+ 198 008a 0038     		subs	r0, r0, #0
+ 199 008c 18BF     		it	ne
+ 200 008e 0120     		movne	r0, #1
+ 201              		.loc 1 67 21 view .LVU37
+ 202 0090 7070     		strb	r0, [r6, #1]
+  68:Core/Src/CustomWhile.c ****     diag_IR_LEDs[2] = HAL_GPIO_ReadPin(LED_LS_GPIO_Port,LED_LS_Pin);
+ 203              		.loc 1 68 5 is_stmt 1 view .LVU38
+ 204              		.loc 1 68 23 is_stmt 0 view .LVU39
+ 205 0092 4FF48051 		mov	r1, #4096
+ 206 0096 3846     		mov	r0, r7
+ 207 0098 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 208              	.LVL13:
+ 209 009c 0038     		subs	r0, r0, #0
+ 210 009e 18BF     		it	ne
+ 211 00a0 0120     		movne	r0, #1
+ 212              		.loc 1 68 21 view .LVU40
+ 213 00a2 B070     		strb	r0, [r6, #2]
+  69:Core/Src/CustomWhile.c ****     diag_IR_LEDs[3] = HAL_GPIO_ReadPin(LED_DOWN_LS_GPIO_Port,LED_DOWN_LS_Pin);
+ 214              		.loc 1 69 5 is_stmt 1 view .LVU41
+ 215              		.loc 1 69 23 is_stmt 0 view .LVU42
+ 216 00a4 4FF40071 		mov	r1, #512
+ 217 00a8 3846     		mov	r0, r7
+ 218 00aa FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ARM GAS  C:\Temp\cc1osqai.s 			page 6
+
+
+ 219              	.LVL14:
+ 220 00ae 0038     		subs	r0, r0, #0
+ 221 00b0 18BF     		it	ne
+ 222 00b2 0120     		movne	r0, #1
+ 223              		.loc 1 69 21 view .LVU43
+ 224 00b4 F070     		strb	r0, [r6, #3]
+  70:Core/Src/CustomWhile.c ****     diag_IR_LEDs[4] = HAL_GPIO_ReadPin(LED_DOWN_RS_GPIO_Port,LED_DOWN_RS_Pin);
+ 225              		.loc 1 70 5 is_stmt 1 view .LVU44
+ 226              		.loc 1 70 23 is_stmt 0 view .LVU45
+ 227 00b6 4FF48041 		mov	r1, #16384
+ 228 00ba 3846     		mov	r0, r7
+ 229 00bc FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 230              	.LVL15:
+ 231 00c0 0038     		subs	r0, r0, #0
+ 232 00c2 18BF     		it	ne
+ 233 00c4 0120     		movne	r0, #1
+ 234              		.loc 1 70 21 view .LVU46
+ 235 00c6 3071     		strb	r0, [r6, #4]
+  71:Core/Src/CustomWhile.c ****     diag_IR_LEDs[5] = HAL_GPIO_ReadPin(LED_RS_GPIO_Port,LED_RS_Pin);
+ 236              		.loc 1 71 5 is_stmt 1 view .LVU47
+ 237              		.loc 1 71 23 is_stmt 0 view .LVU48
+ 238 00c8 4FF40061 		mov	r1, #2048
+ 239 00cc 3846     		mov	r0, r7
+ 240 00ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 241              	.LVL16:
+ 242 00d2 0038     		subs	r0, r0, #0
+ 243 00d4 18BF     		it	ne
+ 244 00d6 0120     		movne	r0, #1
+ 245              		.loc 1 71 21 view .LVU49
+ 246 00d8 7071     		strb	r0, [r6, #5]
+  72:Core/Src/CustomWhile.c ****     diag_IR_LEDs[6] = HAL_GPIO_ReadPin(LED_FWD_RS_GPIO_Port,LED_FWD_RS_Pin);
+ 247              		.loc 1 72 5 is_stmt 1 view .LVU50
+ 248              		.loc 1 72 23 is_stmt 0 view .LVU51
+ 249 00da 4FF40041 		mov	r1, #32768
+ 250 00de 3846     		mov	r0, r7
+ 251 00e0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 252              	.LVL17:
+ 253 00e4 0038     		subs	r0, r0, #0
+ 254 00e6 18BF     		it	ne
+ 255 00e8 0120     		movne	r0, #1
+ 256              		.loc 1 72 21 view .LVU52
+ 257 00ea B071     		strb	r0, [r6, #6]
+  73:Core/Src/CustomWhile.c ****     diag_IR_LEDs[7] = HAL_GPIO_ReadPin(LED_MOT_RS_GPIO_Port,LED_MOT_RS_Pin);
+ 258              		.loc 1 73 5 is_stmt 1 view .LVU53
+ 259              		.loc 1 73 23 is_stmt 0 view .LVU54
+ 260 00ec 4FF40051 		mov	r1, #8192
+ 261 00f0 3846     		mov	r0, r7
+ 262 00f2 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 263              	.LVL18:
+ 264 00f6 0038     		subs	r0, r0, #0
+ 265 00f8 18BF     		it	ne
+ 266 00fa 0120     		movne	r0, #1
+ 267              		.loc 1 73 21 view .LVU55
+ 268 00fc F071     		strb	r0, [r6, #7]
+  74:Core/Src/CustomWhile.c ****   
+  75:Core/Src/CustomWhile.c ****     diag_MOT_R[0] = TIM3 -> CCR1;
+ 269              		.loc 1 75 5 is_stmt 1 view .LVU56
+ARM GAS  C:\Temp\cc1osqai.s 			page 7
+
+
+ 270              		.loc 1 75 26 is_stmt 0 view .LVU57
+ 271 00fe 384B     		ldr	r3, .L26+24
+ 272 0100 596B     		ldr	r1, [r3, #52]
+ 273              		.loc 1 75 19 view .LVU58
+ 274 0102 384A     		ldr	r2, .L26+28
+ 275 0104 1180     		strh	r1, [r2]	@ movhi
+  76:Core/Src/CustomWhile.c ****     diag_MOT_R[1] = TIM3 -> CCR2;
+ 276              		.loc 1 76 5 is_stmt 1 view .LVU59
+ 277              		.loc 1 76 26 is_stmt 0 view .LVU60
+ 278 0106 996B     		ldr	r1, [r3, #56]
+ 279              		.loc 1 76 19 view .LVU61
+ 280 0108 5180     		strh	r1, [r2, #2]	@ movhi
+  77:Core/Src/CustomWhile.c ****     diag_MOT_L[0] = TIM3 -> CCR3;
+ 281              		.loc 1 77 5 is_stmt 1 view .LVU62
+ 282              		.loc 1 77 26 is_stmt 0 view .LVU63
+ 283 010a D96B     		ldr	r1, [r3, #60]
+ 284              		.loc 1 77 19 view .LVU64
+ 285 010c 364A     		ldr	r2, .L26+32
+ 286 010e 1180     		strh	r1, [r2]	@ movhi
+  78:Core/Src/CustomWhile.c ****     diag_MOT_L[1] = TIM3 -> CCR4;
+ 287              		.loc 1 78 5 is_stmt 1 view .LVU65
+ 288              		.loc 1 78 26 is_stmt 0 view .LVU66
+ 289 0110 1B6C     		ldr	r3, [r3, #64]
+ 290              		.loc 1 78 19 view .LVU67
+ 291 0112 5380     		strh	r3, [r2, #2]	@ movhi
+  79:Core/Src/CustomWhile.c **** 
+  80:Core/Src/CustomWhile.c ****     UnInterruptable();
+ 292              		.loc 1 80 5 is_stmt 1 view .LVU68
+ 293 0114 FFF7FEFF 		bl	UnInterruptable
+ 294              	.LVL19:
+  81:Core/Src/CustomWhile.c **** 
+  82:Core/Src/CustomWhile.c ****     
+  83:Core/Src/CustomWhile.c **** 
+  84:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(header,3)           != USBD_OK){HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_P
+ 295              		.loc 1 84 5 view .LVU69
+ 296              	.LBB17:
+ 297              		.loc 1 84 10 is_stmt 0 view .LVU70
+ 298 0118 04E0     		b	.L11
+ 299              	.L12:
+ 300              		.loc 1 84 60 is_stmt 1 discriminator 2 view .LVU71
+ 301 011a 4FF48041 		mov	r1, #16384
+ 302 011e 3348     		ldr	r0, .L26+36
+ 303 0120 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 304              	.LVL20:
+ 305              	.L11:
+ 306              		.loc 1 84 48 discriminator 1 view .LVU72
+ 307              		.loc 1 84 12 is_stmt 0 discriminator 1 view .LVU73
+ 308 0124 0321     		movs	r1, #3
+ 309 0126 A8B2     		uxth	r0, r5
+ 310 0128 FFF7FEFF 		bl	CDC_Transmit_FS
+ 311              	.LVL21:
+ 312              		.loc 1 84 48 discriminator 1 view .LVU74
+ 313 012c 0028     		cmp	r0, #0
+ 314 012e F4D1     		bne	.L12
+ 315              	.L13:
+ 316              	.LBE17:
+ 317              	.LBB18:
+ARM GAS  C:\Temp\cc1osqai.s 			page 8
+
+
+  85:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&diag_ProSW ,1*2)   != USBD_OK){}
+ 318              		.loc 1 85 60 is_stmt 1 discriminator 1 view .LVU75
+ 319              		.loc 1 85 48 discriminator 1 view .LVU76
+ 320              		.loc 1 85 12 is_stmt 0 discriminator 1 view .LVU77
+ 321 0130 0221     		movs	r1, #2
+ 322 0132 2848     		ldr	r0, .L26+12
+ 323 0134 FFF7FEFF 		bl	CDC_Transmit_FS
+ 324              	.LVL22:
+ 325              		.loc 1 85 48 discriminator 1 view .LVU78
+ 326 0138 0028     		cmp	r0, #0
+ 327 013a F9D1     		bne	.L13
+ 328              	.L14:
+ 329              	.LBE18:
+ 330              	.LBB19:
+  86:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&diag_ProLED ,1*3)  != USBD_OK){}
+ 331              		.loc 1 86 60 is_stmt 1 discriminator 1 view .LVU79
+ 332              		.loc 1 86 48 discriminator 1 view .LVU80
+ 333              		.loc 1 86 12 is_stmt 0 discriminator 1 view .LVU81
+ 334 013c 0321     		movs	r1, #3
+ 335 013e 2648     		ldr	r0, .L26+16
+ 336 0140 FFF7FEFF 		bl	CDC_Transmit_FS
+ 337              	.LVL23:
+ 338              		.loc 1 86 48 discriminator 1 view .LVU82
+ 339 0144 0028     		cmp	r0, #0
+ 340 0146 F9D1     		bne	.L14
+ 341              	.L15:
+ 342              	.LBE19:
+ 343              	.LBB20:
+  87:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&IMU_Accel, 4*3)    != USBD_OK){}
+ 344              		.loc 1 87 60 is_stmt 1 discriminator 1 view .LVU83
+ 345              		.loc 1 87 48 discriminator 1 view .LVU84
+ 346              		.loc 1 87 12 is_stmt 0 discriminator 1 view .LVU85
+ 347 0148 0C21     		movs	r1, #12
+ 348 014a 2948     		ldr	r0, .L26+40
+ 349 014c FFF7FEFF 		bl	CDC_Transmit_FS
+ 350              	.LVL24:
+ 351              		.loc 1 87 48 discriminator 1 view .LVU86
+ 352 0150 0028     		cmp	r0, #0
+ 353 0152 F9D1     		bne	.L15
+ 354              	.L16:
+ 355              	.LBE20:
+ 356              	.LBB21:
+  88:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&IMU_Gyro , 4*3)    != USBD_OK){}
+ 357              		.loc 1 88 60 is_stmt 1 discriminator 1 view .LVU87
+ 358              		.loc 1 88 48 discriminator 1 view .LVU88
+ 359              		.loc 1 88 12 is_stmt 0 discriminator 1 view .LVU89
+ 360 0154 0C21     		movs	r1, #12
+ 361 0156 2748     		ldr	r0, .L26+44
+ 362 0158 FFF7FEFF 		bl	CDC_Transmit_FS
+ 363              	.LVL25:
+ 364              		.loc 1 88 48 discriminator 1 view .LVU90
+ 365 015c 0028     		cmp	r0, #0
+ 366 015e F9D1     		bne	.L16
+ 367              	.L17:
+ 368              	.LBE21:
+ 369              	.LBB22:
+  89:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&ADC1s, 2*9)        != USBD_OK){}
+ARM GAS  C:\Temp\cc1osqai.s 			page 9
+
+
+ 370              		.loc 1 89 60 is_stmt 1 discriminator 1 view .LVU91
+ 371              		.loc 1 89 48 discriminator 1 view .LVU92
+ 372              		.loc 1 89 12 is_stmt 0 discriminator 1 view .LVU93
+ 373 0160 1221     		movs	r1, #18
+ 374 0162 2548     		ldr	r0, .L26+48
+ 375 0164 FFF7FEFF 		bl	CDC_Transmit_FS
+ 376              	.LVL26:
+ 377              		.loc 1 89 48 discriminator 1 view .LVU94
+ 378 0168 0028     		cmp	r0, #0
+ 379 016a F9D1     		bne	.L17
+ 380              	.L18:
+ 381              	.LBE22:
+ 382              	.LBB23:
+  90:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&ADC_H, 2*9)        != USBD_OK){}
+ 383              		.loc 1 90 60 is_stmt 1 discriminator 1 view .LVU95
+ 384              		.loc 1 90 48 discriminator 1 view .LVU96
+ 385              		.loc 1 90 12 is_stmt 0 discriminator 1 view .LVU97
+ 386 016c 1221     		movs	r1, #18
+ 387 016e 2348     		ldr	r0, .L26+52
+ 388 0170 FFF7FEFF 		bl	CDC_Transmit_FS
+ 389              	.LVL27:
+ 390              		.loc 1 90 48 discriminator 1 view .LVU98
+ 391 0174 0028     		cmp	r0, #0
+ 392 0176 F9D1     		bne	.L18
+ 393              	.L19:
+ 394              	.LBE23:
+ 395              	.LBB24:
+  91:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&ADC_L, 2*9)        != USBD_OK){}
+ 396              		.loc 1 91 60 is_stmt 1 discriminator 1 view .LVU99
+ 397              		.loc 1 91 48 discriminator 1 view .LVU100
+ 398              		.loc 1 91 12 is_stmt 0 discriminator 1 view .LVU101
+ 399 0178 1221     		movs	r1, #18
+ 400 017a 2148     		ldr	r0, .L26+56
+ 401 017c FFF7FEFF 		bl	CDC_Transmit_FS
+ 402              	.LVL28:
+ 403              		.loc 1 91 48 discriminator 1 view .LVU102
+ 404 0180 0028     		cmp	r0, #0
+ 405 0182 F9D1     		bne	.L19
+ 406              	.L20:
+ 407              	.LBE24:
+ 408              	.LBB25:
+  92:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&diag_IR_LEDs, 8)   != USBD_OK){}
+ 409              		.loc 1 92 60 is_stmt 1 discriminator 1 view .LVU103
+ 410              		.loc 1 92 48 discriminator 1 view .LVU104
+ 411              		.loc 1 92 12 is_stmt 0 discriminator 1 view .LVU105
+ 412 0184 0821     		movs	r1, #8
+ 413 0186 1548     		ldr	r0, .L26+20
+ 414 0188 FFF7FEFF 		bl	CDC_Transmit_FS
+ 415              	.LVL29:
+ 416              		.loc 1 92 48 discriminator 1 view .LVU106
+ 417 018c 0028     		cmp	r0, #0
+ 418 018e F9D1     		bne	.L20
+ 419              	.L21:
+ 420              	.LBE25:
+ 421              	.LBB26:
+  93:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&IR_LED_TIMER, 4)   != USBD_OK){}
+ 422              		.loc 1 93 60 is_stmt 1 discriminator 1 view .LVU107
+ARM GAS  C:\Temp\cc1osqai.s 			page 10
+
+
+ 423              		.loc 1 93 48 discriminator 1 view .LVU108
+ 424              		.loc 1 93 12 is_stmt 0 discriminator 1 view .LVU109
+ 425 0190 0421     		movs	r1, #4
+ 426 0192 1C48     		ldr	r0, .L26+60
+ 427 0194 FFF7FEFF 		bl	CDC_Transmit_FS
+ 428              	.LVL30:
+ 429              		.loc 1 93 48 discriminator 1 view .LVU110
+ 430 0198 0028     		cmp	r0, #0
+ 431 019a F9D1     		bne	.L21
+ 432              	.L22:
+ 433              	.LBE26:
+ 434              	.LBB27:
+  94:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&diag_MOT_L, 2*2)   != USBD_OK){}
+ 435              		.loc 1 94 60 is_stmt 1 discriminator 1 view .LVU111
+ 436              		.loc 1 94 48 discriminator 1 view .LVU112
+ 437              		.loc 1 94 12 is_stmt 0 discriminator 1 view .LVU113
+ 438 019c 0421     		movs	r1, #4
+ 439 019e 1248     		ldr	r0, .L26+32
+ 440 01a0 FFF7FEFF 		bl	CDC_Transmit_FS
+ 441              	.LVL31:
+ 442              		.loc 1 94 48 discriminator 1 view .LVU114
+ 443 01a4 0028     		cmp	r0, #0
+ 444 01a6 F9D1     		bne	.L22
+ 445              	.L23:
+ 446              	.LBE27:
+ 447              	.LBB28:
+  95:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(&diag_MOT_R, 2*2)   != USBD_OK){}
+ 448              		.loc 1 95 60 is_stmt 1 discriminator 1 view .LVU115
+ 449              		.loc 1 95 48 discriminator 1 view .LVU116
+ 450              		.loc 1 95 12 is_stmt 0 discriminator 1 view .LVU117
+ 451 01a8 0421     		movs	r1, #4
+ 452 01aa 0E48     		ldr	r0, .L26+28
+ 453 01ac FFF7FEFF 		bl	CDC_Transmit_FS
+ 454              	.LVL32:
+ 455              		.loc 1 95 48 discriminator 1 view .LVU118
+ 456 01b0 0028     		cmp	r0, #0
+ 457 01b2 F9D1     		bne	.L23
+ 458              	.L24:
+ 459              	.LBE28:
+ 460              	.LBB29:
+  96:Core/Src/CustomWhile.c ****     while( CDC_Transmit_FS(terminator,4)       != USBD_OK){}
+ 461              		.loc 1 96 60 is_stmt 1 discriminator 1 view .LVU119
+ 462              		.loc 1 96 48 discriminator 1 view .LVU120
+ 463              		.loc 1 96 12 is_stmt 0 discriminator 1 view .LVU121
+ 464 01b4 0421     		movs	r1, #4
+ 465 01b6 A0B2     		uxth	r0, r4
+ 466 01b8 FFF7FEFF 		bl	CDC_Transmit_FS
+ 467              	.LVL33:
+ 468              		.loc 1 96 48 discriminator 1 view .LVU122
+ 469 01bc 0028     		cmp	r0, #0
+ 470 01be F9D1     		bne	.L24
+ 471              	.LBE29:
+  97:Core/Src/CustomWhile.c **** 
+  98:Core/Src/CustomWhile.c ****     __enable_irq();
+ 472              		.loc 1 98 5 is_stmt 1 view .LVU123
+ 473              	.LBB30:
+ 474              	.LBI30:
+ARM GAS  C:\Temp\cc1osqai.s 			page 11
+
+
+ 475              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+   1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.2.0
+   5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     08. May 2019
+   6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
+   7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
+   8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2019 Arm Limited. All rights reserved.
+   9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+  23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+  24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
+  41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
+  52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+  56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+ARM GAS  C:\Temp\cc1osqai.s 			page 12
+
+
+  57:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
+  62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ARM GAS  C:\Temp\cc1osqai.s 			page 13
+
+
+ 114:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 116:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __COMPILER_BARRIER
+ 117:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __COMPILER_BARRIER()                   __ASM volatile("":::"memory")
+ 118:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 119:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 120:Drivers/CMSIS/Include/cmsis_gcc.h **** /* #########################  Startup and Lowlevel Init  ######################## */
+ 121:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 122:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __PROGRAM_START
+ 123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Initializes data and bss sections
+ 126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details This default implementations initialized all data and additional bss
+ 127:Drivers/CMSIS/Include/cmsis_gcc.h ****            sections relying on .copy.table and .zero.table specified properly
+ 128:Drivers/CMSIS/Include/cmsis_gcc.h ****            in the used linker script.
+ 129:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 130:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 131:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE __NO_RETURN void __cmsis_start(void)
+ 132:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 133:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern void _start(void) __NO_RETURN;
+ 134:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 135:Drivers/CMSIS/Include/cmsis_gcc.h ****   typedef struct {
+ 136:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t const* src;
+ 137:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
+ 138:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
+ 139:Drivers/CMSIS/Include/cmsis_gcc.h ****   } __copy_table_t;
+ 140:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 141:Drivers/CMSIS/Include/cmsis_gcc.h ****   typedef struct {
+ 142:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
+ 143:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
+ 144:Drivers/CMSIS/Include/cmsis_gcc.h ****   } __zero_table_t;
+ 145:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 146:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_start__;
+ 147:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_end__;
+ 148:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_start__;
+ 149:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_end__;
+ 150:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 151:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (__copy_table_t const* pTable = &__copy_table_start__; pTable < &__copy_table_end__; ++pTable
+ 152:Drivers/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
+ 153:Drivers/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = pTable->src[i];
+ 154:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
+ 155:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
+ 156:Drivers/CMSIS/Include/cmsis_gcc.h ****  
+ 157:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (__zero_table_t const* pTable = &__zero_table_start__; pTable < &__zero_table_end__; ++pTable
+ 158:Drivers/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
+ 159:Drivers/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = 0u;
+ 160:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
+ 161:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
+ 162:Drivers/CMSIS/Include/cmsis_gcc.h ****  
+ 163:Drivers/CMSIS/Include/cmsis_gcc.h ****   _start();
+ 164:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 165:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 166:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __PROGRAM_START           __cmsis_start
+ 167:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 168:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 169:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __INITIAL_SP
+ 170:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __INITIAL_SP              __StackTop
+ARM GAS  C:\Temp\cc1osqai.s 			page 14
+
+
+ 171:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 172:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 173:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __STACK_LIMIT
+ 174:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __STACK_LIMIT             __StackLimit
+ 175:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 176:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 177:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __VECTOR_TABLE
+ 178:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __VECTOR_TABLE            __Vectors
+ 179:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 180:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 181:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __VECTOR_TABLE_ATTRIBUTE
+ 182:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __VECTOR_TABLE_ATTRIBUTE  __attribute((used, section(".vectors")))
+ 183:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 184:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 185:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 186:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 187:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 188:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
+ 189:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 190:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 191:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 192:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 193:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 194:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 195:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 196:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 476              		.loc 2 196 27 view .LVU124
+ 477              	.LBB31:
+ 197:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 198:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 478              		.loc 2 198 3 view .LVU125
+ 479              		.syntax unified
+ 480              	@ 198 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 481 01c0 62B6     		cpsie i
+ 482              	@ 0 "" 2
+ 483              		.thumb
+ 484              		.syntax unified
+ 485              	.LBE31:
+ 486              	.LBE30:
+  99:Core/Src/CustomWhile.c **** } ...
+ 487              		.loc 1 99 1 is_stmt 0 view .LVU126
+ 488 01c2 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 489              	.L27:
+ 490 01c6 00BF     		.align	2
+ 491              	.L26:
+ 492 01c8 00000000 		.word	.LC0
+ 493 01cc 04000000 		.word	.LC1
+ 494 01d0 00100048 		.word	1207963648
+ 495 01d4 00000000 		.word	diag_ProSW
+ 496 01d8 00000000 		.word	diag_ProLED
+ 497 01dc 00000000 		.word	diag_IR_LEDs
+ 498 01e0 00040040 		.word	1073742848
+ 499 01e4 00000000 		.word	diag_MOT_R
+ 500 01e8 00000000 		.word	diag_MOT_L
+ 501 01ec 00080048 		.word	1207961600
+ 502 01f0 00000000 		.word	IMU_Accel
+ 503 01f4 00000000 		.word	IMU_Gyro
+ARM GAS  C:\Temp\cc1osqai.s 			page 15
+
+
+ 504 01f8 00000000 		.word	ADC1s
+ 505 01fc 00000000 		.word	ADC_H
+ 506 0200 00000000 		.word	ADC_L
+ 507 0204 00000000 		.word	IR_LED_TIMER
+ 508 0208 00040048 		.word	1207960576
+ 509              		.cfi_endproc
+ 510              	.LFE910:
+ 512              		.global	diag_MOT_R
+ 513              		.section	.bss.diag_MOT_R,"aw",%nobits
+ 514              		.align	2
+ 517              	diag_MOT_R:
+ 518 0000 00000000 		.space	4
+ 519              		.global	diag_MOT_L
+ 520              		.section	.bss.diag_MOT_L,"aw",%nobits
+ 521              		.align	2
+ 524              	diag_MOT_L:
+ 525 0000 00000000 		.space	4
+ 526              		.global	diag_IR_LEDs
+ 527              		.section	.bss.diag_IR_LEDs,"aw",%nobits
+ 528              		.align	2
+ 531              	diag_IR_LEDs:
+ 532 0000 00000000 		.space	8
+ 532      00000000 
+ 533              		.global	diag_ProLED
+ 534              		.section	.bss.diag_ProLED,"aw",%nobits
+ 535              		.align	2
+ 538              	diag_ProLED:
+ 539 0000 000000   		.space	3
+ 540              		.global	diag_ProSW
+ 541              		.section	.bss.diag_ProSW,"aw",%nobits
+ 542              		.align	2
+ 545              	diag_ProSW:
+ 546 0000 0000     		.space	2
+ 547              		.text
+ 548              	.Letext0:
+ 549              		.file 3 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 550              		.file 4 "c:\\users\\jessejabezarendse\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-
+ 551              		.file 5 "c:\\users\\jessejabezarendse\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-
+ 552              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 553              		.file 7 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
+ 554              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ 555              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h"
+ARM GAS  C:\Temp\cc1osqai.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 CustomWhile.c
+  C:\Temp\cc1osqai.s:21     .text.UnInterruptable:00000000 $t
+  C:\Temp\cc1osqai.s:27     .text.UnInterruptable:00000000 UnInterruptable
+  C:\Temp\cc1osqai.s:83     .rodata.CustomWhile.str1.4:00000000 $d
+  C:\Temp\cc1osqai.s:90     .text.CustomWhile:00000000 $t
+  C:\Temp\cc1osqai.s:96     .text.CustomWhile:00000000 CustomWhile
+  C:\Temp\cc1osqai.s:492    .text.CustomWhile:000001c8 $d
+  C:\Temp\cc1osqai.s:545    .bss.diag_ProSW:00000000 diag_ProSW
+  C:\Temp\cc1osqai.s:538    .bss.diag_ProLED:00000000 diag_ProLED
+  C:\Temp\cc1osqai.s:531    .bss.diag_IR_LEDs:00000000 diag_IR_LEDs
+  C:\Temp\cc1osqai.s:517    .bss.diag_MOT_R:00000000 diag_MOT_R
+  C:\Temp\cc1osqai.s:524    .bss.diag_MOT_L:00000000 diag_MOT_L
+  C:\Temp\cc1osqai.s:514    .bss.diag_MOT_R:00000000 $d
+  C:\Temp\cc1osqai.s:521    .bss.diag_MOT_L:00000000 $d
+  C:\Temp\cc1osqai.s:528    .bss.diag_IR_LEDs:00000000 $d
+  C:\Temp\cc1osqai.s:535    .bss.diag_ProLED:00000000 $d
+  C:\Temp\cc1osqai.s:542    .bss.diag_ProSW:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_NVIC_DisableIRQ
+HAL_GPIO_ReadPin
+HAL_GPIO_TogglePin
+CDC_Transmit_FS
+IMU_Accel
+IMU_Gyro
+ADC1s
+ADC_H
+ADC_L
+IR_LED_TIMER

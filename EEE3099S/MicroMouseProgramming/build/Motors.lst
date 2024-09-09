@@ -1,0 +1,192 @@
+ARM GAS  C:\Temp\cc4e9xsX.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Motors.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/Motors.c"
+  20              		.section	.text.initMotors,"ax",%progbits
+  21              		.align	1
+  22              		.global	initMotors
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	initMotors:
+  28              	.LFB905:
+   1:Core/Src/Motors.c **** //********************************************************************
+   2:Core/Src/Motors.c **** //*                      Micro Mouse Board                           *
+   3:Core/Src/Motors.c **** //*                          Motor Library                           *
+   4:Core/Src/Motors.c **** //*==================================================================*
+   5:Core/Src/Motors.c **** //* @author:    Jesse Jabez Arendse                                  *
+   6:Core/Src/Motors.c **** //* @date:      04/07/2024                                           *
+   7:Core/Src/Motors.c **** //*==================================================================*
+   8:Core/Src/Motors.c **** 
+   9:Core/Src/Motors.c **** #include "main.h"
+  10:Core/Src/Motors.c **** #include "Motors.h"
+  11:Core/Src/Motors.c **** 
+  12:Core/Src/Motors.c **** extern TIM_HandleTypeDef htim3;
+  13:Core/Src/Motors.c **** extern uint16_t MOT_L[2];
+  14:Core/Src/Motors.c **** extern uint16_t MOT_R[2];
+  15:Core/Src/Motors.c **** 
+  16:Core/Src/Motors.c **** void initMotors(){
+  29              		.loc 1 16 18 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  17:Core/Src/Motors.c ****     TIM3->CCR1 = 0;
+  37              		.loc 1 17 5 view .LVU1
+  38              		.loc 1 17 16 is_stmt 0 view .LVU2
+  39 0002 0B4B     		ldr	r3, .L3
+  40 0004 0021     		movs	r1, #0
+  41 0006 5963     		str	r1, [r3, #52]
+ARM GAS  C:\Temp\cc4e9xsX.s 			page 2
+
+
+  18:Core/Src/Motors.c ****     TIM3->CCR2 = 0;
+  42              		.loc 1 18 5 is_stmt 1 view .LVU3
+  43              		.loc 1 18 16 is_stmt 0 view .LVU4
+  44 0008 9963     		str	r1, [r3, #56]
+  19:Core/Src/Motors.c ****     TIM3->CCR3 = 0;
+  45              		.loc 1 19 5 is_stmt 1 view .LVU5
+  46              		.loc 1 19 16 is_stmt 0 view .LVU6
+  47 000a D963     		str	r1, [r3, #60]
+  20:Core/Src/Motors.c ****     TIM3->CCR4 = 0;
+  48              		.loc 1 20 5 is_stmt 1 view .LVU7
+  49              		.loc 1 20 16 is_stmt 0 view .LVU8
+  50 000c 1964     		str	r1, [r3, #64]
+  21:Core/Src/Motors.c **** 
+  22:Core/Src/Motors.c ****     HAL_TIM_PWM_Start(&htim3, RIGHT_FWD);
+  51              		.loc 1 22 5 is_stmt 1 view .LVU9
+  52 000e 094C     		ldr	r4, .L3+4
+  53 0010 2046     		mov	r0, r4
+  54 0012 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+  55              	.LVL0:
+  23:Core/Src/Motors.c ****     HAL_TIM_PWM_Start(&htim3, RIGHT_BWD);
+  56              		.loc 1 23 5 view .LVU10
+  57 0016 0421     		movs	r1, #4
+  58 0018 2046     		mov	r0, r4
+  59 001a FFF7FEFF 		bl	HAL_TIM_PWM_Start
+  60              	.LVL1:
+  24:Core/Src/Motors.c ****     HAL_TIM_PWM_Start(&htim3, LEFT_FWD);
+  61              		.loc 1 24 5 view .LVU11
+  62 001e 0821     		movs	r1, #8
+  63 0020 2046     		mov	r0, r4
+  64 0022 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+  65              	.LVL2:
+  25:Core/Src/Motors.c ****     HAL_TIM_PWM_Start(&htim3, LEFT_BWD);
+  66              		.loc 1 25 5 view .LVU12
+  67 0026 0C21     		movs	r1, #12
+  68 0028 2046     		mov	r0, r4
+  69 002a FFF7FEFF 		bl	HAL_TIM_PWM_Start
+  70              	.LVL3:
+  26:Core/Src/Motors.c **** }
+  71              		.loc 1 26 1 is_stmt 0 view .LVU13
+  72 002e 10BD     		pop	{r4, pc}
+  73              	.L4:
+  74              		.align	2
+  75              	.L3:
+  76 0030 00040040 		.word	1073742848
+  77 0034 00000000 		.word	htim3
+  78              		.cfi_endproc
+  79              	.LFE905:
+  81              		.section	.text.updateSpeeds,"ax",%progbits
+  82              		.align	1
+  83              		.global	updateSpeeds
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  88              	updateSpeeds:
+  89              	.LFB906:
+  27:Core/Src/Motors.c **** 
+  28:Core/Src/Motors.c **** void updateSpeeds(){
+ARM GAS  C:\Temp\cc4e9xsX.s 			page 3
+
+
+  90              		.loc 1 28 20 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  29:Core/Src/Motors.c ****     TIM3->CCR1 = MOT_R[0];
+  95              		.loc 1 29 5 view .LVU15
+  96              		.loc 1 29 23 is_stmt 0 view .LVU16
+  97 0000 054A     		ldr	r2, .L6
+  98 0002 1188     		ldrh	r1, [r2]
+  99              		.loc 1 29 16 view .LVU17
+ 100 0004 054B     		ldr	r3, .L6+4
+ 101 0006 5963     		str	r1, [r3, #52]
+  30:Core/Src/Motors.c ****     TIM3->CCR2 = MOT_R[1];
+ 102              		.loc 1 30 5 is_stmt 1 view .LVU18
+ 103              		.loc 1 30 23 is_stmt 0 view .LVU19
+ 104 0008 5288     		ldrh	r2, [r2, #2]
+ 105              		.loc 1 30 16 view .LVU20
+ 106 000a 9A63     		str	r2, [r3, #56]
+  31:Core/Src/Motors.c ****     TIM3->CCR3 = MOT_L[0];
+ 107              		.loc 1 31 5 is_stmt 1 view .LVU21
+ 108              		.loc 1 31 23 is_stmt 0 view .LVU22
+ 109 000c 044A     		ldr	r2, .L6+8
+ 110 000e 1188     		ldrh	r1, [r2]
+ 111              		.loc 1 31 16 view .LVU23
+ 112 0010 D963     		str	r1, [r3, #60]
+  32:Core/Src/Motors.c ****     TIM3->CCR4 = MOT_L[1];
+ 113              		.loc 1 32 5 is_stmt 1 view .LVU24
+ 114              		.loc 1 32 23 is_stmt 0 view .LVU25
+ 115 0012 5288     		ldrh	r2, [r2, #2]
+ 116              		.loc 1 32 16 view .LVU26
+ 117 0014 1A64     		str	r2, [r3, #64]
+  33:Core/Src/Motors.c **** }...
+ 118              		.loc 1 33 1 view .LVU27
+ 119 0016 7047     		bx	lr
+ 120              	.L7:
+ 121              		.align	2
+ 122              	.L6:
+ 123 0018 00000000 		.word	MOT_R
+ 124 001c 00040040 		.word	1073742848
+ 125 0020 00000000 		.word	MOT_L
+ 126              		.cfi_endproc
+ 127              	.LFE906:
+ 129              		.text
+ 130              	.Letext0:
+ 131              		.file 2 "c:\\users\\jessejabezarendse\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-
+ 132              		.file 3 "c:\\users\\jessejabezarendse\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-
+ 133              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 134              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 135              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 136              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h"
+ 137              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h"
+ARM GAS  C:\Temp\cc4e9xsX.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Motors.c
+  C:\Temp\cc4e9xsX.s:21     .text.initMotors:00000000 $t
+  C:\Temp\cc4e9xsX.s:27     .text.initMotors:00000000 initMotors
+  C:\Temp\cc4e9xsX.s:76     .text.initMotors:00000030 $d
+  C:\Temp\cc4e9xsX.s:82     .text.updateSpeeds:00000000 $t
+  C:\Temp\cc4e9xsX.s:88     .text.updateSpeeds:00000000 updateSpeeds
+  C:\Temp\cc4e9xsX.s:123    .text.updateSpeeds:00000018 $d
+
+UNDEFINED SYMBOLS
+HAL_TIM_PWM_Start
+htim3
+MOT_R
+MOT_L
