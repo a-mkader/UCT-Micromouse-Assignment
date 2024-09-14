@@ -1,26 +1,29 @@
--IC:/Users/JesseJabezArendse/Desktop/MM
--IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/shared/supportpackages/stm32/include
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseTemplate_ert_rtw/instrumented
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Core/Inc
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Core/Src/instrumented
--IC:/Program\ Files/MATLAB/R2023a/extern/include
--IC:/Program\ Files/MATLAB/R2023a/simulink/include
--IC:/Program\ Files/MATLAB/R2023a/rtw/c/src
--IC:/Program\ Files/MATLAB/R2023a/rtw/c/src/ext_mode/common
--IC:/Program\ Files/MATLAB/R2023a/rtw/c/ert
--IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/armcortexmbase/scheduler/include
--IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/armcortexmbase/xcp/include
--IC:/Program\ Files/MATLAB/R2023a/rtw/c/src/ext_mode/serial
--IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/svd/common/include
--IC:/ProgramData/MATLAB/SupportPackages/R2023a/3P.instrset/cmsis.instrset/CMSIS/Include
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Drivers/CMSIS/Device/ST/STM32L4xx/Include
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/Drivers/CMSIS/Include
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/USB_DEVICE/App/instrumented
--IC:/Users/JesseJabezArendse/Desktop/MM/MicroMouseProgramming/USB_DEVICE/Target/instrumented
+-IC:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/include
+-IC:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S/MicroMouseTemplate_ert_rtw/instrumented
+-IC:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Inc
+-IC:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/instrumented
+-IC:/Program\ Files/MATLAB/R2024a/extern/include
+-IC:/Program\ Files/MATLAB/R2024a/simulink/include
+-IC:/Program\ Files/MATLAB/R2024a/rtw/c/src
+-IC:/Program\ Files/MATLAB/R2024a/rtw/c/src/ext_mode/common
+-IC:/Program\ Files/MATLAB/R2024a/rtw/c/ert
+-IC:/Program\ Files/MATLAB/R2024a/toolbox/target/shared/armcortexmbase/scheduler/include
+-IC:/Program\ Files/MATLAB/R2024a/toolbox/target/shared/armcortexmbase/xcp/include
+-IC:/Program\ Files/MATLAB/R2024a/rtw/c/src/ext_mode/serial
+-IC:/Program\ Files/MATLAB/R2024a/toolbox/target/shared/svd/common/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis.instrset/CMSIS/Core/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include/dsp
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Include
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Inc
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App
+-IE:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/Target
 -I../../Core/Inc
 -I../../USB_DEVICE/App
 -I../../USB_DEVICE/Target

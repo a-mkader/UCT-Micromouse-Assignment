@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 1.264
- * Simulink Coder version         : 9.9 (R2023a) 19-Nov-2022
- * C/C++ source code generated on : Thu Sep  5 14:32:16 2024
+ * Model version                  : 3.3
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Sat Sep 14 19:54:01 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -68,6 +68,8 @@ void rt_OneStep(void)
   /* Check for overrun. Protect OverrunFlag against preemption */
   if (OverrunFlag++) {
     IsrOverrun = 1;
+
+    /* PROFILE_TASK_OVERRUN */
     OverrunFlag--;
     return;
   }
@@ -120,11 +122,13 @@ int main(int argc, char **argv)
   taskTimeEnd_MicroMouseTemplate(1U);
   __disable_irq();
   ARMCM_SysTick_Config(modelBaseRate);
-  runModel = rtmGetErrorStatus(MicroMouseTemplate_M) == (NULL);
+  runModel =
+    rtmGetErrorStatus(MicroMouseTemplate_M) == (NULL);
   __enable_irq();
   __enable_irq();
   while (runModel) {
-    stopRequested = !(rtmGetErrorStatus(MicroMouseTemplate_M) == (NULL));
+    stopRequested = !(
+                      rtmGetErrorStatus(MicroMouseTemplate_M) == (NULL));
     if (stopRequested) {
       SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
     }
