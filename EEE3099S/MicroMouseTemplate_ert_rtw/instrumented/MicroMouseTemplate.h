@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.3
+ * Model version                  : 3.5
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Sat Sep 14 19:54:01 2024
+ * C/C++ source code generated on : Sat Sep 14 20:35:13 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -103,8 +103,9 @@ typedef struct {
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S44>/PWM Output' */
   struct {
     uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
-    uint_T is_ButtonPressed:2;         /* '<Root>/HelloMicroMouse!' */
+    uint_T is_SW2pressed:2;            /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
+    uint_T LED2:1;                     /* '<Root>/HelloMicroMouse!' */
   } bitsForTID0;
 
   int8_T If1_ActiveSubsystem;          /* '<S5>/If1' */
