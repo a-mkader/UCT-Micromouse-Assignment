@@ -1,2 +1,6 @@
 syscalls.o: \
+<<<<<<< HEAD
  C:/Users/abdul/UCT_Micromouse/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/instrumented/syscalls.c
+=======
+ E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/syscalls.c
+>>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc

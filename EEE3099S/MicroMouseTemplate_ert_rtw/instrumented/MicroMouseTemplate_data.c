@@ -7,9 +7,15 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
+<<<<<<< HEAD
  * Model version                  : 1.264
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
  * C/C++ source code generated on : Fri Sep 13 12:11:45 2024
+=======
+ * Model version                  : 3.5
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Sat Sep 14 20:35:13 2024
+>>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -117,12 +123,12 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
   0U,
 
   /* Computed Parameter: Constant_Value_b
-   * Referenced by: '<S44>/Constant'
+   * Referenced by: '<S48>/Constant'
    */
   0U,
 
   /* Computed Parameter: Constant1_Value
-   * Referenced by: '<S44>/Constant1'
+   * Referenced by: '<S48>/Constant1'
    */
   0U,
 
@@ -146,135 +152,155 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   false,
 
-  /* Start of '<S49>/MATLAB System6' */
+  /* Computed Parameter: Out1_Y0
+   * Referenced by: '<S35>/Out1'
+   */
+  0,
+
+  /* Computed Parameter: Out1_Y0_l
+   * Referenced by: '<S37>/Out1'
+   */
+  0,
+
+  /* Computed Parameter: Out1_Y0_o
+   * Referenced by: '<S34>/Out1'
+   */
+  0,
+
+  /* Computed Parameter: Out1_Y0_m
+   * Referenced by: '<S36>/Out1'
+   */
+  0,
+
+  /* Start of '<S53>/MATLAB System6' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System6'
+     * Referenced by: '<S53>/MATLAB System6'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System6' */
+  /* End of '<S53>/MATLAB System6' */
 
-  /* Start of '<S49>/MATLAB System5' */
+  /* Start of '<S53>/MATLAB System5' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System5'
+     * Referenced by: '<S53>/MATLAB System5'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System5' */
+  /* End of '<S53>/MATLAB System5' */
 
-  /* Start of '<S49>/MATLAB System4' */
+  /* Start of '<S53>/MATLAB System4' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System4'
+     * Referenced by: '<S53>/MATLAB System4'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System4' */
+  /* End of '<S53>/MATLAB System4' */
 
-  /* Start of '<S49>/MATLAB System3' */
+  /* Start of '<S53>/MATLAB System3' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System3'
+     * Referenced by: '<S53>/MATLAB System3'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System3' */
+  /* End of '<S53>/MATLAB System3' */
 
-  /* Start of '<S49>/MATLAB System2' */
+  /* Start of '<S53>/MATLAB System2' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System2'
+     * Referenced by: '<S53>/MATLAB System2'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System2' */
+  /* End of '<S53>/MATLAB System2' */
 
-  /* Start of '<S49>/MATLAB System1' */
+  /* Start of '<S53>/MATLAB System1' */
   {
     /* Expression: 0
-     * Referenced by: '<S49>/MATLAB System1'
+     * Referenced by: '<S53>/MATLAB System1'
      */
     0.0
   }
   ,
 
-  /* End of '<S49>/MATLAB System1' */
+  /* End of '<S53>/MATLAB System1' */
 
-  /* Start of '<S48>/MATLAB System2' */
+  /* Start of '<S52>/MATLAB System2' */
   {
     /* Expression: 0
-     * Referenced by: '<S48>/MATLAB System2'
+     * Referenced by: '<S52>/MATLAB System2'
      */
     0.0
   }
   ,
 
-  /* End of '<S48>/MATLAB System2' */
+  /* End of '<S52>/MATLAB System2' */
 
-  /* Start of '<S48>/MATLAB System1' */
+  /* Start of '<S52>/MATLAB System1' */
   {
     /* Expression: 0
-     * Referenced by: '<S48>/MATLAB System1'
+     * Referenced by: '<S52>/MATLAB System1'
      */
     0.0
   }
   ,
 
-  /* End of '<S48>/MATLAB System1' */
+  /* End of '<S52>/MATLAB System1' */
 
-  /* Start of '<S47>/MATLAB System4' */
+  /* Start of '<S51>/MATLAB System4' */
   {
     /* Expression: 0
-     * Referenced by: '<S47>/MATLAB System4'
+     * Referenced by: '<S51>/MATLAB System4'
      */
     0.0
   }
   ,
 
-  /* End of '<S47>/MATLAB System4' */
+  /* End of '<S51>/MATLAB System4' */
 
-  /* Start of '<S47>/MATLAB System3' */
+  /* Start of '<S51>/MATLAB System3' */
   {
     /* Expression: 0
-     * Referenced by: '<S47>/MATLAB System3'
+     * Referenced by: '<S51>/MATLAB System3'
      */
     0.0
   }
   ,
 
-  /* End of '<S47>/MATLAB System3' */
+  /* End of '<S51>/MATLAB System3' */
 
-  /* Start of '<S47>/MATLAB System2' */
+  /* Start of '<S51>/MATLAB System2' */
   {
     /* Expression: 0
-     * Referenced by: '<S47>/MATLAB System2'
+     * Referenced by: '<S51>/MATLAB System2'
      */
     0.0
   }
   ,
 
-  /* End of '<S47>/MATLAB System2' */
+  /* End of '<S51>/MATLAB System2' */
 
-  /* Start of '<S47>/MATLAB System1' */
+  /* Start of '<S51>/MATLAB System1' */
   {
     /* Expression: 0
-     * Referenced by: '<S47>/MATLAB System1'
+     * Referenced by: '<S51>/MATLAB System1'
      */
     0.0
   }
-  /* End of '<S47>/MATLAB System1' */
+  /* End of '<S51>/MATLAB System1' */
 };
 
 /*
