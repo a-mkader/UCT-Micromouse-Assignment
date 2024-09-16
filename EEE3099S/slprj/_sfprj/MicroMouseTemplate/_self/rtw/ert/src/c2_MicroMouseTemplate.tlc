@@ -7,11 +7,18 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   5 \
+    NumChartData   7 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "LED0"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LED0"\
+      SrcLocation  ""\
     }\
     ChartData {\
       Name         "LED2"\
@@ -32,6 +39,13 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_SW1pressed"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "SW1pressed"\
       SrcLocation  ""\
     }\
     ChartData {\

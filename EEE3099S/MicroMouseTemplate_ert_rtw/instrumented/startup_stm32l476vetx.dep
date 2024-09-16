@@ -1,6 +1,2 @@
 startup_stm32l476vetx.o: \
-<<<<<<< HEAD
  C:/Users/abdul/UCT_Micromouse/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s
-=======
- E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/startup_stm32l476vetx.s
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc

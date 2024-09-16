@@ -7,15 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
-<<<<<<< HEAD
- * Model version                  : 1.264
+ * Model version                  : 3.6
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Fri Sep 13 12:11:45 2024
-=======
- * Model version                  : 3.5
- * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Sat Sep 14 20:35:13 2024
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
+ * C/C++ source code generated on : Mon Sep 16 16:30:51 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -68,92 +62,26 @@ void code_profiling_atomic_read_store(uint32_T sectionId)
 }
 
 volatile int IsrOverrun = 0;
-boolean_T isRateRunning[3] = { 0, 0, 0 };
-
-boolean_T need2runFlags[3] = { 0, 0, 0 };
-
+static boolean_T OverrunFlag = 0;
 void rt_OneStep(void)
 {
-  boolean_T eventFlags[3];
-  int_T i;
-
-  /* Check base rate for overrun */
-  if (isRateRunning[0]++) {
+  /* Check for overrun. Protect OverrunFlag against preemption */
+  if (OverrunFlag++) {
     IsrOverrun = 1;
 
     /* PROFILE_TASK_OVERRUN */
-<<<<<<< HEAD
-    isRateRunning[0]--;                /* allow future iterations to succeed*/
-=======
     OverrunFlag--;
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
     return;
   }
 
-  /*
-   * For a bare-board target (i.e., no operating system), the rates
-   * that execute this base step are buffered locally to allow for
-   * overlapping preemption.
-   */
-  MicroMouseTemplate_SetEventsForThisBaseStep(eventFlags);
   __enable_irq();
   taskTimeStart_MicroMouseTemplate(2U);
-  MicroMouseTemplate_step0();
+  MicroMouseTemplate_step();
   taskTimeEnd_MicroMouseTemplate(2U);
 
   /* Get model outputs here */
   __disable_irq();
-  isRateRunning[0]--;
-  for (i = 1; i < 3; i++) {
-    if (eventFlags[i]) {
-      if (need2runFlags[i]++) {
-        IsrOverrun = 1;
-        need2runFlags[i]--;            /* allow future iterations to succeed*/
-
-        /* PROFILE_TASK_OVERRUN i */
-        break;
-      }
-    }
-  }
-
-  for (i = 1; i < 3; i++) {
-    if (isRateRunning[i]) {
-      /* Yield to higher priority*/
-      return;
-    }
-
-    if (need2runFlags[i]) {
-      isRateRunning[i]++;
-      __enable_irq();
-
-      /* Step the model for subrate "i" */
-      switch (i)
-      {
-       case 1 :
-        taskTimeStart_MicroMouseTemplate(3U);
-        MicroMouseTemplate_step1();
-        taskTimeEnd_MicroMouseTemplate(3U);
-
-        /* Get model outputs here */
-        break;
-
-       case 2 :
-        taskTimeStart_MicroMouseTemplate(4U);
-        MicroMouseTemplate_step2();
-        taskTimeEnd_MicroMouseTemplate(4U);
-
-        /* Get model outputs here */
-        break;
-
-       default :
-        break;
-      }
-
-      __disable_irq();
-      need2runFlags[i]--;
-      isRateRunning[i]--;
-    }
-  }
+  OverrunFlag--;
 }
 
 volatile boolean_T stopRequested;
@@ -209,9 +137,9 @@ int main(int argc, char **argv)
   }
 
   /* Terminate model */
-  taskTimeStart_MicroMouseTemplate(5U);
+  taskTimeStart_MicroMouseTemplate(3U);
   MicroMouseTemplate_terminate();
-  taskTimeEnd_MicroMouseTemplate(5U);
+  taskTimeEnd_MicroMouseTemplate(3U);
 
 #if !defined(MW_FREERTOS) && !defined(USE_RTX)
 

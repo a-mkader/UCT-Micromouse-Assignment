@@ -2,11 +2,7 @@
 ## Makefile generated for component 'MicroMouseTemplate'. 
 ## 
 ## Makefile     : MicroMouseTemplate.mk
-<<<<<<< HEAD
-## Generated on : Fri Sep 13 12:12:01 2024
-=======
-## Generated on : Sat Sep 14 20:35:16 2024
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
+## Generated on : Mon Sep 16 16:31:15 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/MicroMouseTemplate.elf
 ## Product type : executable
 ## 
@@ -27,11 +23,7 @@ MAKEFILE                  = MicroMouseTemplate.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2024a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2024a/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-<<<<<<< HEAD
 START_DIR                 = C:/Users/abdul/UCT_Micromouse/UCT-Micromouse-Assignment/EEE3099S
-=======
-START_DIR                 = C:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -220,11 +212,11 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ###########################################################################
 
 DEFINES_ = -DMW_TIM3_ENABLED=1 -DMW_ADC2_ENABLED=1 -DMW_ADC2_VAR=mw_adc2 -DMW_ADC2_DMA_ENABLED=DMA1_Channel2_IRQHandler -DMW_ADC2_DMA1_Channel2_TC_ENABLED=1 -DMW_ADC2_DMA_STREAM=2 -DMW_ADC2_DMA_BUFFER_SIZE=18 -DMW_STANDALONE_EXECUTION_PROFILER_ON -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L476xx -DMW_TIMEBASESOURCE=TIM1
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DTID01EQ=0
+DEFINES_OPTS = -DTID01EQ=1
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -D__FPU_PRESENT=1U -D__FPU_USED=1U -DSTACK_SIZE=64 -DRT
-DEFINES_STANDARD = -DMODEL=MicroMouseTemplate -DNUMST=3 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STANDARD = -DMODEL=MicroMouseTemplate -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
@@ -232,11 +224,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-<<<<<<< HEAD
 SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/stm_timer_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/stm_adc_ll.c $(START_DIR)/MicroMouseTemplate_ert_rtw/instrumented/MicroMouseTemplate.c $(START_DIR)/MicroMouseTemplate_ert_rtw/instrumented/MicroMouseTemplate_data.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/IMU.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/CustomWhile.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/Motors.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/main.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/gpio.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/adc.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/dma.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/i2c.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/tim.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/usart.c $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usb_device.c $(START_DIR)/MicroMouseProgramming/USB_DEVICE/Target/instrumented/usbd_conf.c $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usbd_desc.c $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usbd_cdc_if.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_it.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_hal_msp.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_hal_timebase_tim.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_utils.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_exti.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_gpio.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pcd.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pcd_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_usb.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_rcc.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_rcc_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash_ramfunc.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_gpio.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_i2c.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_i2c_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_dma.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_dma_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pwr.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pwr_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_cortex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_exti.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_adc.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_dma.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_tim.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_tim_ex.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_tim.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_usart.c $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_rcc.c $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_core.c $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_ctlreq.c $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_ioreq.c $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/instrumented/usbd_cdc.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/system_stm32l4xx.c $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/instrumented/syscalls.c $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/instrumented/sysmem.c $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s code_profiling_utility_functions.c
-=======
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/stm_timer_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/stm_adc_ll.c $(START_DIR)/MicroMouseTemplate_ert_rtw/instrumented/MicroMouseTemplate.c $(START_DIR)/MicroMouseTemplate_ert_rtw/instrumented/MicroMouseTemplate_data.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/IMU.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/CustomWhile.c $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/Motors.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/main.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/gpio.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/adc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/dma.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/i2c.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/tim.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/usart.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usb_device.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/Target/usbd_conf.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usbd_desc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usbd_cdc_if.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_it.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_hal_msp.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_hal_timebase_tim.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_utils.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_exti.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_gpio.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pcd.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pcd_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_usb.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_adc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_dma.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_tim.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_usart.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_rcc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/system_stm32l4xx.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/syscalls.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/sysmem.c E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/startup_stm32l476vetx.s code_profiling_utility_functions.c
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 
 MAIN_SRC = $(START_DIR)/MicroMouseTemplate_ert_rtw/instrumented/ert_main.c
 
@@ -297,11 +285,7 @@ CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
 #---------------
 
 CPP_LDFLAGS_ = --specs=nano.specs
-<<<<<<< HEAD
 CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
-=======
-CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"E:\users\abdul\Documents\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 
 CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 
@@ -310,11 +294,7 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 #------------------------------
 
 CPP_SHAREDLIB_LDFLAGS_ = --specs=nano.specs
-<<<<<<< HEAD
 CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
-=======
-CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"E:\users\abdul\Documents\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -323,11 +303,7 @@ CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPF
 #-----------
 
 LDFLAGS_ = --specs=nano.specs
-<<<<<<< HEAD
 LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
-=======
-LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"E:\users\abdul\Documents\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 
 LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
 
@@ -352,11 +328,7 @@ MEX_CFLAGS += $(MEX_Compiler_BASIC)
 #--------------------------
 
 SHAREDLIB_LDFLAGS_ = --specs=nano.specs
-<<<<<<< HEAD
 SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
-=======
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"E:\users\abdul\Documents\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
->>>>>>> a7a15a19f1076b326b6a0f18cbd9f81c566186bc
 
 SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -719,203 +691,203 @@ m3m4m4f_multitasking.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/sch
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-main.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/main.c
+main.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/main.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-gpio.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/gpio.c
+gpio.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/gpio.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-adc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/adc.c
+adc.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/adc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-dma.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/dma.c
+dma.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/dma.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-i2c.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/i2c.c
+i2c.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/i2c.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-tim.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/tim.c
+tim.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/tim.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usart.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/usart.c
+usart.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/usart.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usb_device.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usb_device.c
+usb_device.o : $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usb_device.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_conf.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/Target/usbd_conf.c
+usbd_conf.o : $(START_DIR)/MicroMouseProgramming/USB_DEVICE/Target/instrumented/usbd_conf.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_desc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usbd_desc.c
+usbd_desc.o : $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usbd_desc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_cdc_if.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/usbd_cdc_if.c
+usbd_cdc_if.o : $(START_DIR)/MicroMouseProgramming/USB_DEVICE/App/instrumented/usbd_cdc_if.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_it.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_it.c
+stm32l4xx_it.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_it.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_msp.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_hal_msp.c
+stm32l4xx_hal_msp.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_hal_msp.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_timebase_tim.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/stm32l4xx_hal_timebase_tim.c
+stm32l4xx_hal_timebase_tim.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/stm32l4xx_hal_timebase_tim.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_utils.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_utils.c
+stm32l4xx_ll_utils.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_utils.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_exti.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_exti.c
+stm32l4xx_ll_exti.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_exti.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_gpio.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_gpio.c
+stm32l4xx_ll_gpio.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_gpio.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_pcd.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pcd.c
+stm32l4xx_hal_pcd.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pcd.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_pcd_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pcd_ex.c
+stm32l4xx_hal_pcd_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pcd_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_usb.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_usb.c
+stm32l4xx_ll_usb.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_usb.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
+stm32l4xx_hal.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_rcc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
+stm32l4xx_hal_rcc.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_rcc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_rcc_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c
+stm32l4xx_hal_rcc_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_rcc_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_flash.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c
+stm32l4xx_hal_flash.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_flash_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c
+stm32l4xx_hal_flash_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_flash_ramfunc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c
+stm32l4xx_hal_flash_ramfunc.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_flash_ramfunc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_gpio.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
+stm32l4xx_hal_gpio.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_gpio.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_i2c.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c
+stm32l4xx_hal_i2c.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_i2c.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_i2c_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c
+stm32l4xx_hal_i2c_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_i2c_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_dma.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
+stm32l4xx_hal_dma.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_dma.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_dma_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c
+stm32l4xx_hal_dma_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_dma_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_pwr.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
+stm32l4xx_hal_pwr.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pwr.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_pwr_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
+stm32l4xx_hal_pwr_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_pwr_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_cortex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
+stm32l4xx_hal_cortex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_cortex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_exti.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c
+stm32l4xx_hal_exti.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_exti.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_adc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_adc.c
+stm32l4xx_ll_adc.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_adc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_dma.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_dma.c
+stm32l4xx_ll_dma.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_dma.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_tim.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c
+stm32l4xx_hal_tim.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_tim.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_hal_tim_ex.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c
+stm32l4xx_hal_tim_ex.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_hal_tim_ex.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_tim.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_tim.c
+stm32l4xx_ll_tim.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_tim.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_usart.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_usart.c
+stm32l4xx_ll_usart.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_usart.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-stm32l4xx_ll_rcc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_rcc.c
+stm32l4xx_ll_rcc.o : $(START_DIR)/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Src/instrumented/stm32l4xx_ll_rcc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_core.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
+usbd_core.o : $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_core.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_ctlreq.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
+usbd_ctlreq.o : $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_ctlreq.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_ioreq.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
+usbd_ioreq.o : $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Src/instrumented/usbd_ioreq.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-usbd_cdc.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
+usbd_cdc.o : $(START_DIR)/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/instrumented/usbd_cdc.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-system_stm32l4xx.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/Core/Src/system_stm32l4xx.c
+system_stm32l4xx.o : $(START_DIR)/MicroMouseProgramming/Core/Src/instrumented/system_stm32l4xx.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-syscalls.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/syscalls.c
+syscalls.o : $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/instrumented/syscalls.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-sysmem.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/sysmem.c
+sysmem.o : $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Core/instrumented/sysmem.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-startup_stm32l476vetx.o : E:/users/abdul/Documents/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/startup_stm32l476vetx.s
+startup_stm32l476vetx.o : $(START_DIR)/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s
 	$(AS) $(ASFLAGS) -o "$@" "$<"
 
 
