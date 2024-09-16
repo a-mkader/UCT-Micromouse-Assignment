@@ -1,5 +1,5 @@
 ASFLAGS_ADDITIONAL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 TARGET_LOAD_CMD = 
 TARGET_LOAD_CMD_ARGS = 
-TARGET_PKG_INSTALLDIR = C:/PROGRA~3/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stm32/stm32l4xx_based
+TARGET_PKG_INSTALLDIR = C:/PROGRA~3/MATLAB/SUPPOR~1/R2024a/toolbox/target/SUPPOR~1/stm32/STM32L~2
 STACK_SIZE = 64

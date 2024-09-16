@@ -28,37 +28,28 @@ void xilUploadProfilingData(uint32_T sectionId)
 }
 
 /* For real-time, multitasking case this function is stubbed out. */
-void xilProfilingTimerFreezeInternal(void)
-{
-}
+#define xilProfilingTimerFreezeInternal() {}
 
 void xilProfilingTimerFreeze(void)
 {
 }
 
-/* For real-time, multitasking case this function is stubbed out. */
-void xilProfilingTimerUnFreezeInternal(void)
-{
-}
+#define xilProfilingTimerUnFreezeInternal() {}
 
 void xilProfilingTimerUnFreeze(void)
 {
 }
 
-void taskTimeStart(uint32_T sectionId)
-{
-  /* Send execution profiling data to host */
-  xilUploadProfilingData(sectionId);
-  xilProfilingTimerUnFreezeInternal();
+/* Tic/Toc methods for task profiling */
+#define taskTimeStart(id)              { \
+ xilUploadProfilingData(id); \
+ xilProfilingTimerUnFreezeInternal(); \
 }
-
-void taskTimeEnd(uint32_T sectionId)
-{
-  uint32_T sectionIdNeg = ~sectionId;
-  xilProfilingTimerFreezeInternal();
-
-  /* Send execution profiling data to host */
-  xilUploadProfilingData(sectionIdNeg);
+#define taskTimeEnd(id)                { \
+ uint32_T sectionIdNeg = id; \
+ sectionIdNeg = ~sectionIdNeg; \
+ xilProfilingTimerFreezeInternal(); \
+ xilUploadProfilingData(sectionIdNeg); \
 }
 
 /* Code instrumentation method(s) for model MicroMouseTemplate */

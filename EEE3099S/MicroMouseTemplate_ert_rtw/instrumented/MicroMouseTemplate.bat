@@ -1,7 +1,9 @@
 
 cd .
 
-if "%1"=="" ("C:\PROGRA~1\MATLAB\R2023a\bin\win64\gmake"  -f MicroMouseTemplate.mk all) else ("C:\PROGRA~1\MATLAB\R2023a\bin\win64\gmake"  -f MicroMouseTemplate.mk %1)
+chcp 1252
+
+if "%1"=="" ("C:\PROGRA~1\MATLAB\R2024a\bin\win64\gmake"  -f MicroMouseTemplate.mk all) else ("C:\PROGRA~1\MATLAB\R2024a\bin\win64\gmake"  -f MicroMouseTemplate.mk %1)
 @if errorlevel 1 goto error_exit
 
 exit /B 0

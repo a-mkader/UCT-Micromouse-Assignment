@@ -8,8 +8,8 @@
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
  * Model version                  : 1.264
- * Simulink Coder version         : 9.9 (R2023a) 19-Nov-2022
- * C/C++ source code generated on : Thu Sep  5 14:32:16 2024
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Fri Sep 13 12:11:45 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -30,6 +30,66 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    * Referenced by: '<S8>/Constant'
    */
   1.0,
+
+  /* Expression: 1
+   * Referenced by: '<Root>/Pulse Generator'
+   */
+  1.0,
+
+  /* Computed Parameter: PulseGenerator_Period
+   * Referenced by: '<Root>/Pulse Generator'
+   */
+  2.0,
+
+  /* Computed Parameter: PulseGenerator_Duty
+   * Referenced by: '<Root>/Pulse Generator'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Pulse Generator'
+   */
+  0.0,
+
+  /* Expression: 1
+   * Referenced by: '<Root>/Pulse Generator2'
+   */
+  1.0,
+
+  /* Computed Parameter: PulseGenerator2_Period
+   * Referenced by: '<Root>/Pulse Generator2'
+   */
+  2.0,
+
+  /* Computed Parameter: PulseGenerator2_Duty
+   * Referenced by: '<Root>/Pulse Generator2'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Pulse Generator2'
+   */
+  0.0,
+
+  /* Expression: 1
+   * Referenced by: '<Root>/Pulse Generator1'
+   */
+  1.0,
+
+  /* Computed Parameter: PulseGenerator1_Period
+   * Referenced by: '<Root>/Pulse Generator1'
+   */
+  2.0,
+
+  /* Computed Parameter: PulseGenerator1_Duty
+   * Referenced by: '<Root>/Pulse Generator1'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Pulse Generator1'
+   */
+  0.0,
 
   /* Computed Parameter: DataStoreMemory2_InitialValue
    * Referenced by: '<S1>/Data Store Memory2'
