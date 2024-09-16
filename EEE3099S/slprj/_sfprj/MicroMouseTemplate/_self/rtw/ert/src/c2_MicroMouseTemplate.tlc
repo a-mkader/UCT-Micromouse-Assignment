@@ -7,25 +7,11 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   7 \
+    NumChartData   4 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
-    }\
-    ChartData {\
-      Name         "LED0"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "LED0"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "LED2"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "LED2"\
-      SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_active_c2_MicroMouseTemplate"\
@@ -53,13 +39,6 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         "SW2pressed"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "temporalCounter_i1"\
-      Description  "TemporalCounter"\
-      SFName       ""\
-      Path         ""\
       SrcLocation  ""\
     }\
   }

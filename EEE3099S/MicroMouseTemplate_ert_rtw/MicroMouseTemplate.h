@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.6
+ * Model version                  : 3.7
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Mon Sep 16 16:30:51 2024
+ * C/C++ source code generated on : Mon Sep 16 20:53:33 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -94,6 +94,8 @@ typedef struct {
   int8_T leftWheel_b;                  /* '<Root>/HelloMicroMouse!' */
   int8_T rightWheel_m;                 /* '<Root>/HelloMicroMouse!' */
   boolean_T LED1;                      /* '<Root>/HelloMicroMouse!' */
+  boolean_T LED0;                      /* '<Root>/HelloMicroMouse!' */
+  boolean_T LED2;                      /* '<Root>/HelloMicroMouse!' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem6;/* '<S52>/MATLAB System1' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem5;/* '<S52>/MATLAB System1' */
   B_MATLABSystem1_MicroMouseTem_T MATLABSystem4_c;/* '<S52>/MATLAB System1' */
@@ -131,16 +133,13 @@ typedef struct {
   } TransportDelay_PWORK;              /* '<S4>/Transport Delay' */
 
   struct {
-    uint_T is_c2_MicroMouseTemplate:3; /* '<Root>/HelloMicroMouse!' */
+    uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
     uint_T is_SW1pressed:2;            /* '<Root>/HelloMicroMouse!' */
     uint_T is_SW2pressed:2;            /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
-    uint_T LED0:1;                     /* '<Root>/HelloMicroMouse!' */
-    uint_T LED2:1;                     /* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
   int8_T If1_ActiveSubsystem;          /* '<S5>/If1' */
-  uint8_T temporalCounter_i1;          /* '<Root>/HelloMicroMouse!' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem4_c;/* '<S52>/MATLAB System1' */
@@ -319,6 +318,7 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<Root>/Delay' : Unused code path elimination
  * Block '<S49>/Cast1' : Eliminate redundant data type conversion
  * Block '<S49>/Cast3' : Eliminate redundant data type conversion
  * Block '<S54>/Rate Transition' : Eliminated since input and output rates are identical

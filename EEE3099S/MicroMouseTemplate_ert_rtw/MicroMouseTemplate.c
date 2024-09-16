@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.6
+ * Model version                  : 3.7
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Mon Sep 16 16:30:51 2024
+ * C/C++ source code generated on : Mon Sep 16 20:53:33 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -28,16 +28,12 @@
 #include "stm_adc_ll.h"
 
 /* Named constants for Chart: '<Root>/HelloMicroMouse!' */
-#define MicroMou_IN_WaitUntilSW1pressed ((uint8_T)5U)
-#define MicroMou_IN_WaitUntilSW2pressed ((uint8_T)6U)
-#define MicroMouseTe_IN_NO_ACTIVE_CHILD ((uint8_T)0U)
 #define MicroMouseTemplat_IN_SW1pressed ((uint8_T)1U)
 #define MicroMouseTemplat_IN_SW2pressed ((uint8_T)2U)
 #define MicroMouseTemplate_IN_Left     ((uint8_T)1U)
 #define MicroMouseTemplate_IN_Left1    ((uint8_T)1U)
-#define MicroMouseTemplate_IN_Right    ((uint8_T)2U)
-#define MicroMouseTemplate_IN_Start    ((uint8_T)3U)
-#define MicroMouseTemplate_IN_Stop     ((uint8_T)4U)
+#define MicroMouseTemplate_IN_Stop     ((uint8_T)2U)
+#define Micro_IN_WaitUntilButtonPressed ((uint8_T)3U)
 
 /* user code (top of source file) */
 /* System '<Root>' */
@@ -1025,121 +1021,72 @@ void MicroMouseTemplate_step(void)
   rtb_NOT = ((pinReadLoc & 64U) == 0U);
 
   /* Chart: '<Root>/HelloMicroMouse!' */
-  if (MicroMouseTemplate_DW.temporalCounter_i1 < 7U) {
-    MicroMouseTemplate_DW.temporalCounter_i1++;
-  }
-
   if (MicroMouseTemplate_DW.bitsForTID1.is_active_c2_MicroMouseTemplate == 0U) {
     MicroMouseTemplate_DW.bitsForTID1.is_active_c2_MicroMouseTemplate = 1U;
     MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-      MicroMou_IN_WaitUntilSW2pressed;
+      Micro_IN_WaitUntilButtonPressed;
   } else {
     switch (MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate) {
      case MicroMouseTemplat_IN_SW1pressed:
-      if (rtb_NOT1) {
-        MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed =
-          MicroMouseTe_IN_NO_ACTIVE_CHILD;
-        MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Start;
-        MicroMouseTemplate_DW.bitsForTID1.LED0 = false;
-        MicroMouseTemplate_B.LED1 = true;
-        MicroMouseTemplate_B.leftWheel_b = 0;
-        MicroMouseTemplate_B.rightWheel_m = 0;
-      } else if (MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed ==
-                 MicroMouseTemplate_IN_Left1) {
-        MicroMouseTemplate_B.leftWheel_b = -127;
-        if (MicroMouseTemplate_DW.temporalCounter_i1 >= 5U) {
-          MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
+      if (MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed ==
+          MicroMouseTemplate_IN_Left1) {
+        if (rtb_NOT1) {
           MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed =
-            MicroMouseTemplate_IN_Right;
-          MicroMouseTemplate_B.rightWheel_m = -127;
+            MicroMouseTemplate_IN_Stop;
+          MicroMouseTemplate_B.LED0 = true;
+          MicroMouseTemplate_B.LED1 = false;
+          MicroMouseTemplate_B.LED2 = true;
+          MicroMouseTemplate_B.leftWheel_b = 0;
+          MicroMouseTemplate_B.rightWheel_m = 0;
+        } else {
+          MicroMouseTemplate_B.LED0 = false;
+          MicroMouseTemplate_B.LED1 = true;
+          MicroMouseTemplate_B.LED2 = false;
         }
       } else {
-        /* case IN_Right: */
-        MicroMouseTemplate_B.rightWheel_m = -127;
-        if (MicroMouseTemplate_DW.temporalCounter_i1 >= 5U) {
-          MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
-          MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed =
-            MicroMouseTemplate_IN_Left1;
-          MicroMouseTemplate_B.leftWheel_b = -127;
-        }
+        /* case IN_Stop: */
       }
       break;
 
      case MicroMouseTemplat_IN_SW2pressed:
-      if (rtb_NOT) {
-        MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed =
-          MicroMouseTe_IN_NO_ACTIVE_CHILD;
-        MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Stop;
-        MicroMouseTemplate_DW.bitsForTID1.LED0 = false;
-        MicroMouseTemplate_B.LED1 = true;
-        MicroMouseTemplate_B.leftWheel_b = 0;
-        MicroMouseTemplate_B.rightWheel_m = 0;
-      } else if (MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed ==
-                 MicroMouseTemplate_IN_Left) {
-        MicroMouseTemplate_B.leftWheel_b = MAX_int8_T;
-        if (MicroMouseTemplate_DW.temporalCounter_i1 >= 5U) {
-          MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
+      if (MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed ==
+          MicroMouseTemplate_IN_Left) {
+        if (rtb_NOT) {
           MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed =
-            MicroMouseTemplate_IN_Right;
-          MicroMouseTemplate_B.rightWheel_m = MAX_int8_T;
+            MicroMouseTemplate_IN_Stop;
+          MicroMouseTemplate_B.LED0 = false;
+          MicroMouseTemplate_B.LED1 = true;
+          MicroMouseTemplate_B.LED2 = false;
+          MicroMouseTemplate_B.leftWheel_b = 0;
+          MicroMouseTemplate_B.rightWheel_m = 0;
+        } else {
+          MicroMouseTemplate_B.LED0 = true;
+          MicroMouseTemplate_B.LED1 = false;
+          MicroMouseTemplate_B.LED2 = true;
+          MicroMouseTemplate_B.leftWheel_b = 90;
+          MicroMouseTemplate_B.rightWheel_m = 90;
         }
       } else {
-        /* case IN_Right: */
-        MicroMouseTemplate_B.rightWheel_m = MAX_int8_T;
-        if (MicroMouseTemplate_DW.temporalCounter_i1 >= 5U) {
-          MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
-          MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed =
-            MicroMouseTemplate_IN_Left;
-          MicroMouseTemplate_B.leftWheel_b = MAX_int8_T;
-        }
-      }
-      break;
-
-     case MicroMouseTemplate_IN_Start:
-      MicroMouseTemplate_B.LED1 = true;
-      MicroMouseTemplate_B.leftWheel_b = 0;
-      MicroMouseTemplate_B.rightWheel_m = 0;
-      break;
-
-     case MicroMouseTemplate_IN_Stop:
-      MicroMouseTemplate_B.LED1 = true;
-      MicroMouseTemplate_B.leftWheel_b = 0;
-      MicroMouseTemplate_B.rightWheel_m = 0;
-      break;
-
-     case MicroMou_IN_WaitUntilSW1pressed:
-      if (rtb_NOT) {
-        MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTemplat_IN_SW1pressed;
-        MicroMouseTemplate_DW.bitsForTID1.LED2 = true;
-        MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
-        MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed =
-          MicroMouseTemplate_IN_Left1;
-        MicroMouseTemplate_B.leftWheel_b = -127;
-      } else {
-        MicroMouseTemplate_DW.bitsForTID1.LED0 =
-          !MicroMouseTemplate_DW.bitsForTID1.LED0;
+        /* case IN_Stop: */
       }
       break;
 
      default:
-      /* case IN_WaitUntilSW2pressed: */
+      /* case IN_WaitUntilButtonPressed: */
       if (rtb_NOT1) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
           MicroMouseTemplat_IN_SW2pressed;
-        MicroMouseTemplate_DW.bitsForTID1.LED2 = true;
-        MicroMouseTemplate_DW.temporalCounter_i1 = 0U;
         MicroMouseTemplate_DW.bitsForTID1.is_SW2pressed =
           MicroMouseTemplate_IN_Left;
-        MicroMouseTemplate_B.leftWheel_b = MAX_int8_T;
       } else if (rtb_NOT) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMou_IN_WaitUntilSW1pressed;
+          MicroMouseTemplat_IN_SW1pressed;
+        MicroMouseTemplate_DW.bitsForTID1.is_SW1pressed =
+          MicroMouseTemplate_IN_Left1;
       } else {
-        MicroMouseTemplate_DW.bitsForTID1.LED2 =
-          !MicroMouseTemplate_DW.bitsForTID1.LED2;
+        MicroMouseTemplate_B.LED0 = true;
+        MicroMouseTemplate_B.LED1 = false;
+        MicroMouseTemplate_B.LED2 = true;
       }
       break;
     }
@@ -1243,8 +1190,16 @@ void MicroMouseTemplate_step(void)
 
   /* MATLABSystem: '<S62>/Digital Port Write' */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 8192U);
+  if (MicroMouseTemplate_B.LED0) {
+    i = 8192;
+  } else {
+    i = 0;
+  }
+
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 8192U);
+
+  /* End of MATLABSystem: '<S62>/Digital Port Write' */
 
   /* MATLABSystem: '<S64>/Digital Port Write' */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
@@ -1261,8 +1216,16 @@ void MicroMouseTemplate_step(void)
 
   /* MATLABSystem: '<S66>/Digital Port Write' */
   MicroMouseTemplate_B.portNameLoc = GPIOC;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 32768U);
+  if (MicroMouseTemplate_B.LED2) {
+    i = 32768;
+  } else {
+    i = 0;
+  }
+
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 32768U);
+
+  /* End of MATLABSystem: '<S66>/Digital Port Write' */
 
   /* MATLABSystem: '<S60>/Digital Port Write' incorporates:
    *  Constant: '<S8>/Constant'
