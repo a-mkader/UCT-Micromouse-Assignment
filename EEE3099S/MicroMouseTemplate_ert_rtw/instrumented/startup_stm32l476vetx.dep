@@ -1,2 +1,2 @@
 startup_stm32l476vetx.o: \
- C:/Users/abdul/UCT-Micromouse-Assignment/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s
+ C:/Users/zaino/ONEDRI~1/EEE3099S/Project/EEE3099S/MicroMouseProgramming/STM32CubeIDE/Application/User/Startup/instrumented/startup_stm32l476vetx.s

@@ -1,11 +1,10 @@
-config load "C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\MicroMouseProgramming.ioc"
+config load "C:\Users\zaino\OneDrive - University of Cape Town\EEE3099S\Project\EEE3099S\MicroMouseProgramming\MicroMouseProgramming.ioc"
 project toolchain STM32CubeIDE
 
 SetStructure Advanced
 
-project setCustomFWPath "C:\Users\abdul\STM32Cube\Repository\STM32Cube_FW_L4_V1.17.2"
+project setCustomFWPath "C:\Users\zaino\STM32Cube\Repository\STM32Cube_FW_L4_V1.17.2"
 
-config save C:\Users\abdul\UCT_Micromouse\UCT-Micromouse-Assignment\EEE3099S\MicroMouseProgramming\MicroMouseProgramming.ioc
-
+project generate 
 
 exit wait
