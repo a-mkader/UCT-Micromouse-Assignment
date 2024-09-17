@@ -7,9 +7,21 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
+<<<<<<< HEAD
  * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
  * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
+=======
+<<<<<<< HEAD
+ * Model version                  : 3.9
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Tue Sep 17 19:25:22 2024
+=======
+ * Model version                  : 3.8
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
+>>>>>>> main
+>>>>>>> abdul
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
