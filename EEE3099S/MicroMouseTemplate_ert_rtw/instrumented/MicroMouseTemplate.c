@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.10
+ * Model version                  : 3.12
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 21:41:13 2024
+ * C/C++ source code generated on : Tue Sep 17 22:10:45 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -28,12 +28,9 @@
 #include "stm_adc_ll.h"
 
 /* Named constants for Chart: '<Root>/HelloMicroMouse!' */
-#define MicroMouseTemp_IN_BackwardsStop ((uint8_T)1U)
-#define MicroMouseTempl_IN_ForwardsStop ((uint8_T)2U)
-#define MicroMouseTemplate_IN_Medium   ((uint8_T)3U)
-#define MicroMouseTemplate_IN_Slow     ((uint8_T)4U)
-#define MicroMouseTemplate_IN_Wait     ((uint8_T)5U)
-#define Micro_IN_WaitUntilButtonPressed ((uint8_T)6U)
+#define MicroMouseTemplate_IN_Medium   ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Slow     ((uint8_T)2U)
+#define Micro_IN_WaitUntilButtonPressed ((uint8_T)3U)
 
 /* user code (top of source file) */
 /* System '<Root>' */
@@ -872,6 +869,91 @@ void MicroMouseTemplate_step(void)
                         (int32_T)(uint16_T)u1);
   ADC_L[8] = MicroMouseTemplate_P.Constant1_Value;
 
+  /* TransportDelay: '<S4>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &MicroMouseTemplate_DW.TransportDelay_PWORK.TUbufferPtrs[0];
+    real_T simTime = MicroMouseTemplate_M->Timing.t[0];
+    real_T tMinusDelay = simTime - (0.5 * MicroMouseTemplate_P.IR_LED_PERIOD);
+    rtb_TransportDelay = rt_TDelayInterpolate(
+      tMinusDelay,
+      0.0,
+      *uBuffer,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize,
+      &MicroMouseTemplate_DW.TransportDelay_IWORK.Last,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.Tail,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.Head,
+      MicroMouseTemplate_P.TransportDelay_InitOutput,
+      1,
+      0);
+  }
+
+  /* Outputs for Atomic SubSystem: '<Root>/GPIO for IR LEDs' */
+  /* MATLABSystem: '<S19>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  if (rtb_TransportDelay != 0.0) {
+    i = 512;
+  } else {
+    i = 0;
+  }
+
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 512U);
+
+  /* End of MATLABSystem: '<S19>/Digital Port Write' */
+
+  /* MATLABSystem: '<S21>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  if (rtb_TransportDelay != 0.0) {
+    i = 16384;
+  } else {
+    i = 0;
+  }
+
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 16384U);
+
+  /* End of MATLABSystem: '<S21>/Digital Port Write' */
+
+  /* MATLABSystem: '<S23>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 256U);
+
+  /* MATLABSystem: '<S25>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 32768U);
+
+  /* MATLABSystem: '<S27>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
+
+  /* MATLABSystem: '<S29>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOB;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
+
+  /* MATLABSystem: '<S31>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 8192U);
+
+  /* MATLABSystem: '<S33>/Digital Port Write' */
+  MicroMouseTemplate_B.portNameLoc = GPIOE;
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 2048U);
+
+  /* End of Outputs for SubSystem: '<Root>/GPIO for IR LEDs' */
+
+  /* Sum: '<S34>/Sum' incorporates:
+   *  Constant: '<S34>/Constant'
+   *  UnitDelay: '<S34>/Unit Delay'
+   */
+  MicroMouseTemplate_B.Sum = MicroMouseTemplate_P.Constant_Value -
+    MicroMouseTemplate_DW.UnitDelay_DSTATE;
+
   /* MATLABSystem: '<S72>/Digital Port Read' */
   pinReadLoc = LL_GPIO_ReadInputPort(GPIOB);
 
@@ -888,76 +970,44 @@ void MicroMouseTemplate_step(void)
    * */
   rtb_NOT = ((pinReadLoc & 64U) == 0U);
 
-  /* Chart: '<Root>/HelloMicroMouse!' incorporates:
-   *  Constant: '<Root>/Constant'
-   */
+  /* Chart: '<Root>/HelloMicroMouse!' */
   if (MicroMouseTemplate_DW.bitsForTID1.is_active_c2_MicroMouseTemplate == 0U) {
     MicroMouseTemplate_DW.bitsForTID1.is_active_c2_MicroMouseTemplate = 1U;
     MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
       Micro_IN_WaitUntilButtonPressed;
   } else {
     switch (MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate) {
-     case MicroMouseTemp_IN_BackwardsStop:
-      MicroMouseTemplate_B.leftWheel_b = 0;
-      MicroMouseTemplate_B.rightWheel_m = 0;
-      MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-        Micro_IN_WaitUntilButtonPressed;
-      break;
-
-     case MicroMouseTempl_IN_ForwardsStop:
-      MicroMouseTemplate_B.leftWheel_b = 0;
-      MicroMouseTemplate_B.rightWheel_m = 0;
-      MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-        Micro_IN_WaitUntilButtonPressed;
-      break;
-
      case MicroMouseTemplate_IN_Medium:
-      MicroMouseTemplate_B.leftWheel_b = 110;
-      MicroMouseTemplate_B.rightWheel_m = 110;
+      MicroMouseTemplate_B.leftWheel_b = 90;
+      MicroMouseTemplate_B.rightWheel_m = 90;
       if (rtb_NOT1) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Wait;
-        MicroMouseTemplate_DW.timer = 0.0;
+          Micro_IN_WaitUntilButtonPressed;
       } else if (rtb_NOT) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
           MicroMouseTemplate_IN_Slow;
         MicroMouseTemplate_B.LED0 = false;
         MicroMouseTemplate_B.LED1 = true;
         MicroMouseTemplate_B.LED2 = false;
-        MicroMouseTemplate_B.leftWheel_b = 75;
-        MicroMouseTemplate_B.rightWheel_m = 75;
+        MicroMouseTemplate_B.leftWheel_b = 60;
+        MicroMouseTemplate_B.rightWheel_m = 60;
       }
       break;
 
      case MicroMouseTemplate_IN_Slow:
-      MicroMouseTemplate_B.leftWheel_b = 75;
-      MicroMouseTemplate_B.rightWheel_m = 75;
+      MicroMouseTemplate_B.leftWheel_b = 60;
+      MicroMouseTemplate_B.rightWheel_m = 60;
       if (rtb_NOT1) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
           MicroMouseTemplate_IN_Medium;
         MicroMouseTemplate_B.LED0 = false;
         MicroMouseTemplate_B.LED1 = true;
         MicroMouseTemplate_B.LED2 = false;
-        MicroMouseTemplate_B.leftWheel_b = 110;
-        MicroMouseTemplate_B.rightWheel_m = 110;
+        MicroMouseTemplate_B.leftWheel_b = 90;
+        MicroMouseTemplate_B.rightWheel_m = 90;
       } else if (rtb_NOT) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTemplate_IN_Wait;
-        MicroMouseTemplate_DW.timer = 0.0;
-      }
-      break;
-
-     case MicroMouseTemplate_IN_Wait:
-      if (MicroMouseTemplate_DW.timer >= 10.0) {
-        MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
-          MicroMouseTempl_IN_ForwardsStop;
-        MicroMouseTemplate_B.LED0 = false;
-        MicroMouseTemplate_B.LED1 = true;
-        MicroMouseTemplate_B.LED2 = false;
-        MicroMouseTemplate_B.leftWheel_b = 0;
-        MicroMouseTemplate_B.rightWheel_m = 0;
-      } else {
-        MicroMouseTemplate_DW.timer -= MicroMouseTemplate_P.Constant_Value;
+          Micro_IN_WaitUntilButtonPressed;
       }
       break;
 
@@ -969,16 +1019,16 @@ void MicroMouseTemplate_step(void)
         MicroMouseTemplate_B.LED0 = false;
         MicroMouseTemplate_B.LED1 = true;
         MicroMouseTemplate_B.LED2 = false;
-        MicroMouseTemplate_B.leftWheel_b = 75;
-        MicroMouseTemplate_B.rightWheel_m = 75;
+        MicroMouseTemplate_B.leftWheel_b = 60;
+        MicroMouseTemplate_B.rightWheel_m = 60;
       } else if (rtb_NOT1) {
         MicroMouseTemplate_DW.bitsForTID1.is_c2_MicroMouseTemplate =
           MicroMouseTemplate_IN_Medium;
         MicroMouseTemplate_B.LED0 = false;
         MicroMouseTemplate_B.LED1 = true;
         MicroMouseTemplate_B.LED2 = false;
-        MicroMouseTemplate_B.leftWheel_b = 110;
-        MicroMouseTemplate_B.rightWheel_m = 110;
+        MicroMouseTemplate_B.leftWheel_b = 90;
+        MicroMouseTemplate_B.rightWheel_m = 90;
       } else {
         MicroMouseTemplate_B.LED0 = !MicroMouseTemplate_B.LED0;
         MicroMouseTemplate_B.LED1 = false;
@@ -1138,91 +1188,6 @@ void MicroMouseTemplate_step(void)
 
   /* End of MATLABSystem: '<S60>/Digital Port Write' */
 
-  /* TransportDelay: '<S4>/Transport Delay' */
-  {
-    real_T **uBuffer = (real_T**)
-      &MicroMouseTemplate_DW.TransportDelay_PWORK.TUbufferPtrs[0];
-    real_T simTime = MicroMouseTemplate_M->Timing.t[0];
-    real_T tMinusDelay = simTime - (0.5 * MicroMouseTemplate_P.IR_LED_PERIOD);
-    rtb_TransportDelay = rt_TDelayInterpolate(
-      tMinusDelay,
-      0.0,
-      *uBuffer,
-      MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize,
-      &MicroMouseTemplate_DW.TransportDelay_IWORK.Last,
-      MicroMouseTemplate_DW.TransportDelay_IWORK.Tail,
-      MicroMouseTemplate_DW.TransportDelay_IWORK.Head,
-      MicroMouseTemplate_P.TransportDelay_InitOutput,
-      1,
-      0);
-  }
-
-  /* Outputs for Atomic SubSystem: '<Root>/GPIO for IR LEDs' */
-  /* MATLABSystem: '<S19>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  if (rtb_TransportDelay != 0.0) {
-    i = 512;
-  } else {
-    i = 0;
-  }
-
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 512U);
-
-  /* End of MATLABSystem: '<S19>/Digital Port Write' */
-
-  /* MATLABSystem: '<S21>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  if (rtb_TransportDelay != 0.0) {
-    i = 16384;
-  } else {
-    i = 0;
-  }
-
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 16384U);
-
-  /* End of MATLABSystem: '<S21>/Digital Port Write' */
-
-  /* MATLABSystem: '<S23>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 256U);
-
-  /* MATLABSystem: '<S25>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 32768U);
-
-  /* MATLABSystem: '<S27>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
-
-  /* MATLABSystem: '<S29>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOB;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
-
-  /* MATLABSystem: '<S31>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 8192U);
-
-  /* MATLABSystem: '<S33>/Digital Port Write' */
-  MicroMouseTemplate_B.portNameLoc = GPIOE;
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 2048U);
-
-  /* End of Outputs for SubSystem: '<Root>/GPIO for IR LEDs' */
-
-  /* Sum: '<S34>/Sum' incorporates:
-   *  Constant: '<S34>/Constant'
-   *  UnitDelay: '<S34>/Unit Delay'
-   */
-  MicroMouseTemplate_B.Sum = MicroMouseTemplate_P.Constant_Value_lf -
-    MicroMouseTemplate_DW.UnitDelay_DSTATE;
-
   /* user code (Update function Body) */
 
   /* System '<Root>' */
@@ -1328,9 +1293,6 @@ void MicroMouseTemplate_initialize(void)
       ADC_L[i] = MicroMouseTemplate_P.DataStoreMemory2_InitialValue_p;
     }
 
-    /* Start for If: '<S5>/If1' */
-    MicroMouseTemplate_DW.If1_ActiveSubsystem = -1;
-
     /* Start for TransportDelay: '<S4>/Transport Delay' */
     {
       real_T *pBuffer =
@@ -1344,6 +1306,9 @@ void MicroMouseTemplate_initialize(void)
       MicroMouseTemplate_DW.TransportDelay_PWORK.TUbufferPtrs[0] = (void *)
         &pBuffer[0];
     }
+
+    /* Start for If: '<S5>/If1' */
+    MicroMouseTemplate_DW.If1_ActiveSubsystem = -1;
 
     /* Start for DataStoreMemory: '<S7>/Data Store Memory' */
     IMU_Accel[0] = MicroMouseTemplate_P.DataStoreMemory_InitialValue;

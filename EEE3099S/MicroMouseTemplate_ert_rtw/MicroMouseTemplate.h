@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.10
+ * Model version                  : 3.12
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 21:41:13 2024
+ * C/C++ source code generated on : Tue Sep 17 22:10:45 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -128,13 +128,12 @@ typedef struct {
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
   real_T UnitDelay_DSTATE;             /* '<S34>/Unit Delay' */
-  real_T timer;                        /* '<Root>/HelloMicroMouse!' */
   struct {
     void *TUbufferPtrs[2];
   } TransportDelay_PWORK;              /* '<S4>/Transport Delay' */
 
   struct {
-    uint_T is_c2_MicroMouseTemplate:3; /* '<Root>/HelloMicroMouse!' */
+    uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
@@ -172,23 +171,20 @@ struct P_MicroMouseTemplate_T_ {
   real_T IR_LED_PERIOD;                /* Variable: IR_LED_PERIOD
                                         * Referenced by: '<S4>/Transport Delay'
                                         */
-  real_T Constant_Value;               /* Expression: -1
-                                        * Referenced by: '<Root>/Constant'
+  real_T TransportDelay_InitOutput;    /* Expression: 0
+                                        * Referenced by: '<S4>/Transport Delay'
+                                        */
+  real_T Constant_Value;               /* Expression: 1
+                                        * Referenced by: '<S34>/Constant'
+                                        */
+  real_T UnitDelay_InitialCondition;   /* Expression: 0
+                                        * Referenced by: '<S34>/Unit Delay'
                                         */
   real_T Constant_Value_l;             /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
                                         */
   real_T Constant_Value_i;             /* Expression: 1
                                         * Referenced by: '<S8>/Constant'
-                                        */
-  real_T TransportDelay_InitOutput;    /* Expression: 0
-                                        * Referenced by: '<S4>/Transport Delay'
-                                        */
-  real_T Constant_Value_lf;            /* Expression: 1
-                                        * Referenced by: '<S34>/Constant'
-                                        */
-  real_T UnitDelay_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S34>/Unit Delay'
                                         */
   int32_T DataStoreMemory2_InitialValue;
                             /* Computed Parameter: DataStoreMemory2_InitialValue
@@ -320,6 +316,7 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<Root>/Constant' : Unused code path elimination
  * Block '<S49>/Cast1' : Eliminate redundant data type conversion
  * Block '<S49>/Cast3' : Eliminate redundant data type conversion
  * Block '<S54>/Rate Transition' : Eliminated since input and output rates are identical
