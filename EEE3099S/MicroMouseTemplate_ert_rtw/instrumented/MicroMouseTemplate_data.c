@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.7
+ * Model version                  : 3.8
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Mon Sep 16 20:53:33 2024
+ * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,6 +26,11 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   0.2,
 
+  /* Expression: 0
+   * Referenced by: '<S4>/Transport Delay'
+   */
+  0.0,
+
   /* Expression: 1
    * Referenced by: '<S34>/Constant'
    */
@@ -33,11 +38,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Expression: 0
    * Referenced by: '<S34>/Unit Delay'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Transport Delay'
    */
   0.0,
 
