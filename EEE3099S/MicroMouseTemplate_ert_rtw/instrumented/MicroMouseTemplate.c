@@ -7,9 +7,15 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
+<<<<<<< HEAD
  * Model version                  : 3.9
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
  * C/C++ source code generated on : Tue Sep 17 19:25:22 2024
+=======
+ * Model version                  : 3.8
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
+>>>>>>> main
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -714,6 +720,28 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
                         (int32_T)(uint16_T)u1);
   ADC_L[8] = MicroMouseTemplate_P.Constant1_Value;
 
+<<<<<<< HEAD
+=======
+  /* TransportDelay: '<S4>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &MicroMouseTemplate_DW.TransportDelay_PWORK.TUbufferPtrs[0];
+    real_T simTime = MicroMouseTemplate_M->Timing.t[0];
+    real_T tMinusDelay = simTime - (0.5 * MicroMouseTemplate_P.IR_LED_PERIOD);
+    rtb_TransportDelay = rt_TDelayInterpolate(
+      tMinusDelay,
+      0.0,
+      *uBuffer,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize,
+      &MicroMouseTemplate_DW.TransportDelay_IWORK.Last,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.Tail,
+      MicroMouseTemplate_DW.TransportDelay_IWORK.Head,
+      MicroMouseTemplate_P.TransportDelay_InitOutput,
+      1,
+      0);
+  }
+
+>>>>>>> main
   /* Outputs for Atomic SubSystem: '<Root>/GPIO for IR LEDs' */
   /* MATLABSystem: '<S19>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
@@ -749,6 +777,7 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOE;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 256;
   } else {
@@ -759,11 +788,16 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 256U);
 
   /* End of MATLABSystem: '<S23>/Digital Port Write' */
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 256U);
+>>>>>>> main
 
   /* MATLABSystem: '<S25>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOE;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 32768;
   } else {
@@ -774,11 +808,16 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 32768U);
 
   /* End of MATLABSystem: '<S25>/Digital Port Write' */
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 32768U);
+>>>>>>> main
 
   /* MATLABSystem: '<S27>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOE;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 4096;
   } else {
@@ -789,11 +828,16 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 4096U);
 
   /* End of MATLABSystem: '<S27>/Digital Port Write' */
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
+>>>>>>> main
 
   /* MATLABSystem: '<S29>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOB;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 4096;
   } else {
@@ -804,11 +848,16 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 4096U);
 
   /* End of MATLABSystem: '<S29>/Digital Port Write' */
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 4096U);
+>>>>>>> main
 
   /* MATLABSystem: '<S31>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOE;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 8192;
   } else {
@@ -819,22 +868,34 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 8192U);
 
   /* End of MATLABSystem: '<S31>/Digital Port Write' */
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 8192U);
+>>>>>>> main
 
   /* MATLABSystem: '<S33>/Digital Port Write' incorporates:
    *  Constant: '<S4>/Constant'
    */
   MicroMouseTemplate_B.portNameLoc = GPIOE;
+<<<<<<< HEAD
   if (MicroMouseTemplate_P.Constant_Value != 0.0) {
     i = 2048;
   } else {
     i = 0;
   }
+=======
+  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, 0U);
+  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, 2048U);
+>>>>>>> main
 
-  LL_GPIO_SetOutputPin(MicroMouseTemplate_B.portNameLoc, (uint32_T)i);
-  LL_GPIO_ResetOutputPin(MicroMouseTemplate_B.portNameLoc, ~(uint32_T)i & 2048U);
-
-  /* End of MATLABSystem: '<S33>/Digital Port Write' */
   /* End of Outputs for SubSystem: '<Root>/GPIO for IR LEDs' */
+
+  /* Sum: '<S34>/Sum' incorporates:
+   *  Constant: '<S34>/Constant'
+   *  UnitDelay: '<S34>/Unit Delay'
+   */
+  MicroMouseTemplate_B.Sum = MicroMouseTemplate_P.Constant_Value -
+    MicroMouseTemplate_DW.UnitDelay_DSTATE;
 
   /* MATLABSystem: '<S72>/Digital Port Read' */
   pinReadLoc = LL_GPIO_ReadInputPort(GPIOB);
@@ -1085,6 +1146,7 @@ void MicroMouseTemplate_step0(void)    /* Sample time: [0.1s, 0.0s] */
   CustomWhile();
 }
 
+<<<<<<< HEAD
 /* Model step function for TID1 */
 void MicroMouseTemplate_step1(void)    /* Sample time: [0.2s, 0.0s] */
 {
@@ -1095,6 +1157,53 @@ void MicroMouseTemplate_step1(void)    /* Sample time: [0.2s, 0.0s] */
 
   /* System '<Root>' */
   CustomWhile();
+=======
+  /* Update for TransportDelay: '<S4>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &MicroMouseTemplate_DW.TransportDelay_PWORK.TUbufferPtrs[0];
+    real_T simTime = MicroMouseTemplate_M->Timing.t[0];
+    MicroMouseTemplate_DW.TransportDelay_IWORK.Head =
+      ((MicroMouseTemplate_DW.TransportDelay_IWORK.Head <
+        (MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize-1)) ?
+       (MicroMouseTemplate_DW.TransportDelay_IWORK.Head+1) : 0);
+    if (MicroMouseTemplate_DW.TransportDelay_IWORK.Head ==
+        MicroMouseTemplate_DW.TransportDelay_IWORK.Tail) {
+      MicroMouseTemplate_DW.TransportDelay_IWORK.Tail =
+        ((MicroMouseTemplate_DW.TransportDelay_IWORK.Tail <
+          (MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize-1)) ?
+         (MicroMouseTemplate_DW.TransportDelay_IWORK.Tail+1) : 0);
+    }
+
+    (*uBuffer + MicroMouseTemplate_DW.TransportDelay_IWORK.CircularBufSize)
+      [MicroMouseTemplate_DW.TransportDelay_IWORK.Head] = simTime;
+    (*uBuffer)[MicroMouseTemplate_DW.TransportDelay_IWORK.Head] =
+      MicroMouseTemplate_B.Sum;
+  }
+
+  /* Update for UnitDelay: '<S34>/Unit Delay' */
+  MicroMouseTemplate_DW.UnitDelay_DSTATE = MicroMouseTemplate_B.Sum;
+
+  /* Update absolute time for base rate */
+  /* The "clockTick0" counts the number of times the code of this task has
+   * been executed. The absolute time is the multiplication of "clockTick0"
+   * and "Timing.stepSize0". Size of "clockTick0" ensures timer will not
+   * overflow during the application lifespan selected.
+   */
+  MicroMouseTemplate_M->Timing.t[0] =
+    ((time_T)(++MicroMouseTemplate_M->Timing.clockTick0)) *
+    MicroMouseTemplate_M->Timing.stepSize0;
+
+  {
+    /* Update absolute timer for sample time: [0.1s, 0.0s] */
+    /* The "clockTick1" counts the number of times the code of this task has
+     * been executed. The resolution of this integer timer is 0.1, which is the step size
+     * of the task. Size of "clockTick1" ensures timer will not overflow during the
+     * application lifespan selected.
+     */
+    MicroMouseTemplate_M->Timing.clockTick1++;
+  }
+>>>>>>> main
 }
 
 /* Model initialize function */

@@ -7,9 +7,15 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
+<<<<<<< HEAD
  * Model version                  : 3.9
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
  * C/C++ source code generated on : Tue Sep 17 19:25:22 2024
+=======
+ * Model version                  : 3.8
+ * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+ * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
+>>>>>>> main
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -149,8 +155,22 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
+<<<<<<< HEAD
   real_T Constant_Value;               /* Expression: 1
                                         * Referenced by: '<S4>/Constant'
+=======
+  real_T IR_LED_PERIOD;                /* Variable: IR_LED_PERIOD
+                                        * Referenced by: '<S4>/Transport Delay'
+                                        */
+  real_T TransportDelay_InitOutput;    /* Expression: 0
+                                        * Referenced by: '<S4>/Transport Delay'
+                                        */
+  real_T Constant_Value;               /* Expression: 1
+                                        * Referenced by: '<S34>/Constant'
+                                        */
+  real_T UnitDelay_InitialCondition;   /* Expression: 0
+                                        * Referenced by: '<S34>/Unit Delay'
+>>>>>>> main
                                         */
   real_T Constant_Value_l;             /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
