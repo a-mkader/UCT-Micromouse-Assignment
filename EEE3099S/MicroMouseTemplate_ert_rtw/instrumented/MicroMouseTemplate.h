@@ -7,21 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
-<<<<<<< HEAD
- * Model version                  : 3.8
+ * Model version                  : 3.10
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
-=======
-<<<<<<< HEAD
- * Model version                  : 3.9
- * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 19:25:22 2024
-=======
- * Model version                  : 3.8
- * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 07:54:06 2024
->>>>>>> main
->>>>>>> abdul
+ * C/C++ source code generated on : Tue Sep 17 21:41:13 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -52,12 +40,12 @@
 #define rtmSetErrorStatus(rtm, val)    ((rtm)->errorStatus = (val))
 #endif
 
-#ifndef rtmStepTask
-#define rtmStepTask(rtm, idx)          ((rtm)->Timing.TaskCounters.TID[(idx)] == 0)
+#ifndef rtmGetT
+#define rtmGetT(rtm)                   (rtmGetTPtr((rtm))[0])
 #endif
 
-#ifndef rtmTaskCounter
-#define rtmTaskCounter(rtm, idx)       ((rtm)->Timing.TaskCounters.TID[(idx)])
+#ifndef rtmGetTPtr
+#define rtmGetTPtr(rtm)                ((rtm)->Timing.t)
 #endif
 
 /* user code (top of header file) */
@@ -91,12 +79,14 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
-  uint16_T CastToDouble[8];            /* '<S54>/Cast To Double' */
   uint16_T Flip[8];                    /* '<S6>/Flip' */
+  uint16_T rtb_CastToDouble_m[8];
   GPIO_TypeDef * portNameLoc;
+  real_T Sum;                          /* '<S34>/Sum' */
   real_T maxV;
-  real_T maxV_m;
+  real_T maxV_c;
   real_T minV;
+  real_T maxV_k;
   int8_T rightWheel;                   /* '<S37>/rightWheel' */
   int8_T rightWheel_c;                 /* '<S35>/rightWheel' */
   int8_T leftWheel;                    /* '<S38>/leftWheel' */
@@ -122,13 +112,31 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
+  struct {
+    real_T modelTStart;
+    real_T TUbufferArea[2048];
+  } TransportDelay_RWORK;              /* '<S4>/Transport Delay' */
+
   stm32cube_blocks_AnalogInput__T obj; /* '<S51>/Analog to Digital Converter' */
+  struct {
+    int_T Tail;
+    int_T Head;
+    int_T Last;
+    int_T CircularBufSize;
+  } TransportDelay_IWORK;              /* '<S4>/Transport Delay' */
+
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
+  real_T UnitDelay_DSTATE;             /* '<S34>/Unit Delay' */
+  real_T timer;                        /* '<Root>/HelloMicroMouse!' */
+  struct {
+    void *TUbufferPtrs[2];
+  } TransportDelay_PWORK;              /* '<S4>/Transport Delay' */
+
   struct {
     uint_T is_c2_MicroMouseTemplate:3; /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
-  } bitsForTID0;
+  } bitsForTID1;
 
   int8_T If1_ActiveSubsystem;          /* '<S5>/If1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;/* '<S52>/MATLAB System1' */
@@ -161,31 +169,26 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
-<<<<<<< HEAD
-  real_T Constant_Value;               /* Expression: 1
-                                        * Referenced by: '<S4>/Constant'
-=======
   real_T IR_LED_PERIOD;                /* Variable: IR_LED_PERIOD
                                         * Referenced by: '<S4>/Transport Delay'
                                         */
-  real_T TransportDelay_InitOutput;    /* Expression: 0
-                                        * Referenced by: '<S4>/Transport Delay'
-                                        */
-  real_T Constant_Value;               /* Expression: 1
-                                        * Referenced by: '<S34>/Constant'
-                                        */
-  real_T UnitDelay_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S34>/Unit Delay'
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> abdul
+  real_T Constant_Value;               /* Expression: -1
+                                        * Referenced by: '<Root>/Constant'
                                         */
   real_T Constant_Value_l;             /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
                                         */
   real_T Constant_Value_i;             /* Expression: 1
                                         * Referenced by: '<S8>/Constant'
+                                        */
+  real_T TransportDelay_InitOutput;    /* Expression: 0
+                                        * Referenced by: '<S4>/Transport Delay'
+                                        */
+  real_T Constant_Value_lf;            /* Expression: 1
+                                        * Referenced by: '<S34>/Constant'
+                                        */
+  real_T UnitDelay_InitialCondition;   /* Expression: 0
+                                        * Referenced by: '<S34>/Unit Delay'
                                         */
   int32_T DataStoreMemory2_InitialValue;
                             /* Computed Parameter: DataStoreMemory2_InitialValue
@@ -259,7 +262,8 @@ struct P_MicroMouseTemplate_T_ {
 
 /* Real-time Model Data Structure */
 struct tag_RTM_MicroMouseTemplate_T {
-  const char_T * volatile errorStatus;
+  const char_T *errorStatus;
+  RTWSolverInfo solverInfo;
 
   /*
    * Timing:
@@ -267,9 +271,12 @@ struct tag_RTM_MicroMouseTemplate_T {
    * the timing information for the model.
    */
   struct {
-    struct {
-      uint8_T TID[2];
-    } TaskCounters;
+    uint32_T clockTick0;
+    time_T stepSize0;
+    uint32_T clockTick1;
+    SimTimeStep simTimeStep;
+    time_T *t;
+    time_T tArray[2];
   } Timing;
 };
 
@@ -300,13 +307,9 @@ extern uint16_T ADC_H[9];              /* '<S6>/Data Store Memory1' */
 extern uint16_T ADC_L[9];              /* '<S6>/Data Store Memory2' */
 extern boolean_T Detections[8];        /* '<S1>/Data Store Memory' */
 
-/* External function called from main */
-extern void MicroMouseTemplate_SetEventsForThisBaseStep(boolean_T *eventFlags);
-
 /* Model entry point functions */
 extern void MicroMouseTemplate_initialize(void);
-extern void MicroMouseTemplate_step0(void);
-extern void MicroMouseTemplate_step1(void);
+extern void MicroMouseTemplate_step(void);
 extern void MicroMouseTemplate_terminate(void);
 
 /* Real-time Model object */
@@ -317,9 +320,6 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S34>/Constant' : Unused code path elimination
- * Block '<S34>/Sum' : Unused code path elimination
- * Block '<S34>/Unit Delay' : Unused code path elimination
  * Block '<S49>/Cast1' : Eliminate redundant data type conversion
  * Block '<S49>/Cast3' : Eliminate redundant data type conversion
  * Block '<S54>/Rate Transition' : Eliminated since input and output rates are identical
