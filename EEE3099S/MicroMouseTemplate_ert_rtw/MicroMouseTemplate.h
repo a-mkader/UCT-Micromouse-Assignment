@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.12
+ * Model version                  : 3.13
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Tue Sep 17 22:10:45 2024
+ * C/C++ source code generated on : Wed Sep 18 18:49:43 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -82,11 +82,9 @@ typedef struct {
   uint16_T Flip[8];                    /* '<S6>/Flip' */
   uint16_T rtb_CastToDouble_m[8];
   GPIO_TypeDef * portNameLoc;
-  real_T Sum;                          /* '<S34>/Sum' */
   real_T maxV;
   real_T maxV_c;
   real_T minV;
-  real_T maxV_k;
   int8_T rightWheel;                   /* '<S37>/rightWheel' */
   int8_T rightWheel_c;                 /* '<S35>/rightWheel' */
   int8_T leftWheel;                    /* '<S38>/leftWheel' */
@@ -112,28 +110,12 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  struct {
-    real_T modelTStart;
-    real_T TUbufferArea[2048];
-  } TransportDelay_RWORK;              /* '<S4>/Transport Delay' */
-
   stm32cube_blocks_AnalogInput__T obj; /* '<S51>/Analog to Digital Converter' */
-  struct {
-    int_T Tail;
-    int_T Head;
-    int_T Last;
-    int_T CircularBufSize;
-  } TransportDelay_IWORK;              /* '<S4>/Transport Delay' */
-
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
-  real_T UnitDelay_DSTATE;             /* '<S34>/Unit Delay' */
-  struct {
-    void *TUbufferPtrs[2];
-  } TransportDelay_PWORK;              /* '<S4>/Transport Delay' */
-
   struct {
     uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
+    uint_T is_On:2;                    /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
@@ -168,23 +150,17 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
-  real_T IR_LED_PERIOD;                /* Variable: IR_LED_PERIOD
-                                        * Referenced by: '<S4>/Transport Delay'
-                                        */
-  real_T TransportDelay_InitOutput;    /* Expression: 0
-                                        * Referenced by: '<S4>/Transport Delay'
+  real_T DownThresh;                   /* Variable: DownThresh
+                                        * Referenced by: '<Root>/Constant'
                                         */
   real_T Constant_Value;               /* Expression: 1
-                                        * Referenced by: '<S34>/Constant'
-                                        */
-  real_T UnitDelay_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S34>/Unit Delay'
-                                        */
-  real_T Constant_Value_l;             /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
                                         */
   real_T Constant_Value_i;             /* Expression: 1
                                         * Referenced by: '<S8>/Constant'
+                                        */
+  real_T Constant_Value_m;             /* Expression: 1
+                                        * Referenced by: '<S4>/Constant'
                                         */
   int32_T DataStoreMemory2_InitialValue;
                             /* Computed Parameter: DataStoreMemory2_InitialValue
@@ -202,10 +178,6 @@ struct P_MicroMouseTemplate_T_ {
                             /* Computed Parameter: DataStoreMemory1_InitialValue
                              * Referenced by: '<S7>/Data Store Memory1'
                              */
-  uint16_T DataStoreMemory1_InitialValue_j;
-                          /* Computed Parameter: DataStoreMemory1_InitialValue_j
-                           * Referenced by: '<S1>/Data Store Memory1'
-                           */
   uint16_T Constant_Value_b;           /* Computed Parameter: Constant_Value_b
                                         * Referenced by: '<S49>/Constant'
                                         */
@@ -223,6 +195,10 @@ struct P_MicroMouseTemplate_T_ {
   uint16_T DataStoreMemory2_InitialValue_p;
                           /* Computed Parameter: DataStoreMemory2_InitialValue_p
                            * Referenced by: '<S6>/Data Store Memory2'
+                           */
+  uint16_T DataStoreMemory1_InitialValue_j;
+                          /* Computed Parameter: DataStoreMemory1_InitialValue_j
+                           * Referenced by: '<S1>/Data Store Memory1'
                            */
   boolean_T DataStoreMemory_InitialValue_p4;
                           /* Computed Parameter: DataStoreMemory_InitialValue_p4
@@ -297,10 +273,10 @@ extern real32_T IMU_Accel[3];          /* '<S7>/Data Store Memory' */
 extern real32_T IMU_Gyro[3];           /* '<S7>/Data Store Memory1' */
 extern int32_T currTicksRS;            /* '<S1>/Data Store Memory2' */
 extern int32_T currTicksLS;            /* '<S1>/Data Store Memory4' */
-extern uint16_T Thresholds[8];         /* '<S1>/Data Store Memory1' */
 extern uint16_T ADC1s[9];              /* '<S6>/Data Store Memory' */
 extern uint16_T ADC_H[9];              /* '<S6>/Data Store Memory1' */
 extern uint16_T ADC_L[9];              /* '<S6>/Data Store Memory2' */
+extern uint16_T Thresholds[8];         /* '<S1>/Data Store Memory1' */
 extern boolean_T Detections[8];        /* '<S1>/Data Store Memory' */
 
 /* Model entry point functions */
@@ -316,7 +292,10 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<Root>/Constant' : Unused code path elimination
+ * Block '<S34>/Constant' : Unused code path elimination
+ * Block '<S34>/Sum' : Unused code path elimination
+ * Block '<S34>/Unit Delay' : Unused code path elimination
+ * Block '<S4>/Transport Delay1' : Unused code path elimination
  * Block '<S49>/Cast1' : Eliminate redundant data type conversion
  * Block '<S49>/Cast3' : Eliminate redundant data type conversion
  * Block '<S54>/Rate Transition' : Eliminated since input and output rates are identical
@@ -371,7 +350,7 @@ extern volatile boolean_T runModel;
  * '<S31>'  : 'MicroMouseTemplate/GPIO for IR LEDs/LED_MOT_RIGHT/ECSoC/ECSimCodegen'
  * '<S32>'  : 'MicroMouseTemplate/GPIO for IR LEDs/LED_RIGHT/ECSoC'
  * '<S33>'  : 'MicroMouseTemplate/GPIO for IR LEDs/LED_RIGHT/ECSoC/ECSimCodegen'
- * '<S34>'  : 'MicroMouseTemplate/IR LED Pattern/Clock'
+ * '<S34>'  : 'MicroMouseTemplate/IR LED Pattern/Clock1'
  * '<S35>'  : 'MicroMouseTemplate/Motors/If Action Subsystem'
  * '<S36>'  : 'MicroMouseTemplate/Motors/If Action Subsystem1'
  * '<S37>'  : 'MicroMouseTemplate/Motors/If Action Subsystem2'
