@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.13
+ * Model version                  : 3.14
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Wed Sep 18 18:49:43 2024
+ * C/C++ source code generated on : Wed Sep 18 20:58:09 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -114,8 +114,8 @@ typedef struct {
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
   struct {
+    uint_T is_On:3;                    /* '<Root>/HelloMicroMouse!' */
     uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
-    uint_T is_On:2;                    /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
@@ -150,8 +150,23 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
-  real_T DownThresh;                   /* Variable: DownThresh
+  real_T DownLSThreshConv;             /* Variable: DownLSThreshConv
                                         * Referenced by: '<Root>/Constant'
+                                        */
+  real_T DownRSThreshConv;             /* Variable: DownRSThreshConv
+                                        * Referenced by: '<Root>/Constant1'
+                                        */
+  real_T FWDLSThreshConv;              /* Variable: FWDLSThreshConv
+                                        * Referenced by: '<Root>/Constant2'
+                                        */
+  real_T FWDRSThreshConv;              /* Variable: FWDRSThreshConv
+                                        * Referenced by: '<Root>/Constant3'
+                                        */
+  real_T LSThreshConv;                 /* Variable: LSThreshConv
+                                        * Referenced by: '<Root>/Constant4'
+                                        */
+  real_T RSThreshConv;                 /* Variable: RSThreshConv
+                                        * Referenced by: '<Root>/Constant5'
                                         */
   real_T Constant_Value;               /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
