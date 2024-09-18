@@ -9,7 +9,11 @@
  *
  * Model version                  : 3.14
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+<<<<<<< HEAD
  * C/C++ source code generated on : Wed Sep 18 21:07:26 2024
+=======
+ * C/C++ source code generated on : Wed Sep 18 20:58:09 2024
+>>>>>>> 4f20edd72ec7e95f0ca68e4761f28d084f7309f4
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,10 +25,42 @@
 
 /* Block parameters (default storage) */
 P_MicroMouseTemplate_T MicroMouseTemplate_P = {
+<<<<<<< HEAD
   /* Expression: 1
    * Referenced by: '<S4>/Constant'
    */
   1.0,
+=======
+  /* Variable: DownLSThreshConv
+   * Referenced by: '<Root>/Constant'
+   */
+  3722.727272727273,
+
+  /* Variable: DownRSThreshConv
+   * Referenced by: '<Root>/Constant1'
+   */
+  3722.727272727273,
+
+  /* Variable: FWDLSThreshConv
+   * Referenced by: '<Root>/Constant2'
+   */
+  3722.727272727273,
+
+  /* Variable: FWDRSThreshConv
+   * Referenced by: '<Root>/Constant3'
+   */
+  3722.727272727273,
+
+  /* Variable: LSThreshConv
+   * Referenced by: '<Root>/Constant4'
+   */
+  3722.727272727273,
+
+  /* Variable: RSThreshConv
+   * Referenced by: '<Root>/Constant5'
+   */
+  3722.727272727273,
+>>>>>>> 4f20edd72ec7e95f0ca68e4761f28d084f7309f4
 
   /* Expression: 1
    * Referenced by: '<S5>/Constant'

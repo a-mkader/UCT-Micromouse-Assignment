@@ -9,7 +9,11 @@
  *
  * Model version                  : 3.14
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
+<<<<<<< HEAD
  * C/C++ source code generated on : Wed Sep 18 21:07:26 2024
+=======
+ * C/C++ source code generated on : Wed Sep 18 20:58:09 2024
+>>>>>>> 4f20edd72ec7e95f0ca68e4761f28d084f7309f4
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -155,6 +159,27 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
+<<<<<<< HEAD
+=======
+  real_T DownLSThreshConv;             /* Variable: DownLSThreshConv
+                                        * Referenced by: '<Root>/Constant'
+                                        */
+  real_T DownRSThreshConv;             /* Variable: DownRSThreshConv
+                                        * Referenced by: '<Root>/Constant1'
+                                        */
+  real_T FWDLSThreshConv;              /* Variable: FWDLSThreshConv
+                                        * Referenced by: '<Root>/Constant2'
+                                        */
+  real_T FWDRSThreshConv;              /* Variable: FWDRSThreshConv
+                                        * Referenced by: '<Root>/Constant3'
+                                        */
+  real_T LSThreshConv;                 /* Variable: LSThreshConv
+                                        * Referenced by: '<Root>/Constant4'
+                                        */
+  real_T RSThreshConv;                 /* Variable: RSThreshConv
+                                        * Referenced by: '<Root>/Constant5'
+                                        */
+>>>>>>> 4f20edd72ec7e95f0ca68e4761f28d084f7309f4
   real_T Constant_Value;               /* Expression: 1
                                         * Referenced by: '<S4>/Constant'
                                         */
