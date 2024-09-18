@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.13
+ * Model version                  : 3.14
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Wed Sep 18 18:49:43 2024
+ * C/C++ source code generated on : Wed Sep 18 21:07:26 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -113,13 +113,18 @@ typedef struct {
   stm32cube_blocks_AnalogInput__T obj; /* '<S51>/Analog to Digital Converter' */
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
+  real_T FWDLSThresh;                  /* '<Root>/HelloMicroMouse!' */
+  real_T FWDRSThresh;                  /* '<Root>/HelloMicroMouse!' */
+  real_T FWD_LS;                       /* '<Root>/HelloMicroMouse!' */
+  real_T FWD_RS;                       /* '<Root>/HelloMicroMouse!' */
   struct {
+    uint_T is_On:3;                    /* '<Root>/HelloMicroMouse!' */
     uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
-    uint_T is_On:2;                    /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
   int8_T If1_ActiveSubsystem;          /* '<S5>/If1' */
+  uint8_T temporalCounter_i1;          /* '<Root>/HelloMicroMouse!' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem4_c;/* '<S52>/MATLAB System1' */
@@ -150,17 +155,14 @@ struct P_MATLABSystem3_MicroMouseTem_T_ {
 
 /* Parameters (default storage) */
 struct P_MicroMouseTemplate_T_ {
-  real_T DownThresh;                   /* Variable: DownThresh
-                                        * Referenced by: '<Root>/Constant'
-                                        */
   real_T Constant_Value;               /* Expression: 1
+                                        * Referenced by: '<S4>/Constant'
+                                        */
+  real_T Constant_Value_l;             /* Expression: 1
                                         * Referenced by: '<S5>/Constant'
                                         */
   real_T Constant_Value_i;             /* Expression: 1
                                         * Referenced by: '<S8>/Constant'
-                                        */
-  real_T Constant_Value_m;             /* Expression: 1
-                                        * Referenced by: '<S4>/Constant'
                                         */
   int32_T DataStoreMemory2_InitialValue;
                             /* Computed Parameter: DataStoreMemory2_InitialValue
@@ -178,6 +180,10 @@ struct P_MicroMouseTemplate_T_ {
                             /* Computed Parameter: DataStoreMemory1_InitialValue
                              * Referenced by: '<S7>/Data Store Memory1'
                              */
+  uint16_T DataStoreMemory1_InitialValue_j;
+                          /* Computed Parameter: DataStoreMemory1_InitialValue_j
+                           * Referenced by: '<S1>/Data Store Memory1'
+                           */
   uint16_T Constant_Value_b;           /* Computed Parameter: Constant_Value_b
                                         * Referenced by: '<S49>/Constant'
                                         */
@@ -195,10 +201,6 @@ struct P_MicroMouseTemplate_T_ {
   uint16_T DataStoreMemory2_InitialValue_p;
                           /* Computed Parameter: DataStoreMemory2_InitialValue_p
                            * Referenced by: '<S6>/Data Store Memory2'
-                           */
-  uint16_T DataStoreMemory1_InitialValue_j;
-                          /* Computed Parameter: DataStoreMemory1_InitialValue_j
-                           * Referenced by: '<S1>/Data Store Memory1'
                            */
   boolean_T DataStoreMemory_InitialValue_p4;
                           /* Computed Parameter: DataStoreMemory_InitialValue_p4
@@ -273,10 +275,10 @@ extern real32_T IMU_Accel[3];          /* '<S7>/Data Store Memory' */
 extern real32_T IMU_Gyro[3];           /* '<S7>/Data Store Memory1' */
 extern int32_T currTicksRS;            /* '<S1>/Data Store Memory2' */
 extern int32_T currTicksLS;            /* '<S1>/Data Store Memory4' */
+extern uint16_T Thresholds[8];         /* '<S1>/Data Store Memory1' */
 extern uint16_T ADC1s[9];              /* '<S6>/Data Store Memory' */
 extern uint16_T ADC_H[9];              /* '<S6>/Data Store Memory1' */
 extern uint16_T ADC_L[9];              /* '<S6>/Data Store Memory2' */
-extern uint16_T Thresholds[8];         /* '<S1>/Data Store Memory1' */
 extern boolean_T Detections[8];        /* '<S1>/Data Store Memory' */
 
 /* Model entry point functions */
@@ -292,6 +294,12 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<Root>/Constant' : Unused code path elimination
+ * Block '<Root>/Constant1' : Unused code path elimination
+ * Block '<Root>/Constant2' : Unused code path elimination
+ * Block '<Root>/Constant3' : Unused code path elimination
+ * Block '<Root>/Constant4' : Unused code path elimination
+ * Block '<Root>/Constant5' : Unused code path elimination
  * Block '<S34>/Constant' : Unused code path elimination
  * Block '<S34>/Sum' : Unused code path elimination
  * Block '<S34>/Unit Delay' : Unused code path elimination

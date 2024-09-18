@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.13
+ * Model version                  : 3.14
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Wed Sep 18 18:49:43 2024
+ * C/C++ source code generated on : Wed Sep 18 21:07:26 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,10 +21,10 @@
 
 /* Block parameters (default storage) */
 P_MicroMouseTemplate_T MicroMouseTemplate_P = {
-  /* Variable: DownThresh
-   * Referenced by: '<Root>/Constant'
+  /* Expression: 1
+   * Referenced by: '<S4>/Constant'
    */
-  2481.818181818182,
+  1.0,
 
   /* Expression: 1
    * Referenced by: '<S5>/Constant'
@@ -33,11 +33,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Expression: 1
    * Referenced by: '<S8>/Constant'
-   */
-  1.0,
-
-  /* Expression: 1
-   * Referenced by: '<S4>/Constant'
    */
   1.0,
 
@@ -61,6 +56,11 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   0.0F,
 
+  /* Computed Parameter: DataStoreMemory1_InitialValue_j
+   * Referenced by: '<S1>/Data Store Memory1'
+   */
+  0U,
+
   /* Computed Parameter: Constant_Value_b
    * Referenced by: '<S49>/Constant'
    */
@@ -83,11 +83,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Computed Parameter: DataStoreMemory2_InitialValue_p
    * Referenced by: '<S6>/Data Store Memory2'
-   */
-  0U,
-
-  /* Computed Parameter: DataStoreMemory1_InitialValue_j
-   * Referenced by: '<S1>/Data Store Memory1'
    */
   0U,
 
