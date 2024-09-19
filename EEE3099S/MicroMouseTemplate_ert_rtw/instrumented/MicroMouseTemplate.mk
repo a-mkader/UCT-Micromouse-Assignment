@@ -3,10 +3,14 @@
 ## 
 ## Makefile     : MicroMouseTemplate.mk
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## Generated on : Wed Sep 18 21:07:29 2024
 =======
 ## Generated on : Wed Sep 18 20:58:15 2024
 >>>>>>> 4f20edd72ec7e95f0ca68e4761f28d084f7309f4
+=======
+## Generated on : Thu Sep 19 13:59:10 2024
+>>>>>>> 6baeb643d52f0db44e8a661bbdf1c9b481646043
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/MicroMouseTemplate.elf
 ## Product type : executable
 ## 
