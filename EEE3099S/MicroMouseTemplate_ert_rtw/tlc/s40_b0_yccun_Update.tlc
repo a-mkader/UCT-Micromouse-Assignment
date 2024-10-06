@@ -1,0 +1,45 @@
+%implements s40_b0_yccun_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(30, "Update", "Header")>\
+%<SLibCGIRDumpSystemUserCode(30, "Update", "Body")>\
+/* Update for TransportDelay: '<S4>/Transport Delay1' */
+/*@[6c9989*/
+                            {
+        real_T **uBuffer = (real_T**)&/*@>6fa7d6*/MicroMouseTemplate_DW./*@>6fa7d5*/TransportDelay1_PWORK.TUbufferPtrs[0];
+
+        real_T simTime   = %<(LibGetT())>;
+
+
+
+
+
+            /*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head = ((/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head < (/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.CircularBufSize-1)) ? (/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head+1) : 0);
+
+            if (/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head == /*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Tail) {
+
+                    /*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Tail = ((/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Tail < (/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.CircularBufSize-1)) ? (/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Tail+1) : 0);
+            }
+
+            (*uBuffer + /*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.CircularBufSize)[/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head] = simTime;
+                (*uBuffer)[/*@>6fa7c7*/MicroMouseTemplate_DW./*@>6fa7c6*/TransportDelay1_IWORK.Head] = /*@>6fa7b8*/MicroMouseTemplate_B./*@>6fa7b7*/Sum;
+    }
+
+/*@]*/
+/* Update for UnitDelay: '<S34>/Unit Delay' */
+/*@>6f4fee*/MicroMouseTemplate_DW./*@>6fa772*/UnitDelay_DSTATE/*@>6c0236*/ = /*@>6f4c58*/MicroMouseTemplate_B./*@>6fa769*/Sum;
+%<SLibCGIRDumpSystemUserCode(30, "Update", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 4, fcnProtoType)>
+%endfunction

@@ -1,0 +1,67 @@
+%implements s40_b0_qlpqn_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d1234}Terminate for MATLABSystem: '<S51>/Analog to Digital Converter' */
+/*@>6bbf77*/if (!/*@<6bbf75*//*@>6e458d*/MicroMouseTemplate_DW./*@>6e8bff*/obj.matlabCodegenIsDeleted) {
+    /*@>6e4593*/MicroMouseTemplate_DW./*@>6e8c02*/obj./*@>6e8bf6*/matlabCodegenIsDeleted/*@>6bbf74*/ = /*@>6d315a*/true;
+    /*@>6bbf7d*/if ((/*@>6e459f*/MicroMouseTemplate_DW./*@>6e8c08*/obj.isInitialized/*@>6bbf7c*/ == /*@>6d316a*/1)/*@>6bbf90*/ && /*@>6e45a5*/MicroMouseTemplate_DW./*@>6e8c0b*/obj.isSetupComplete) {
+/*@[6c42b0*/
+        /*@>6e148b*/ADC_Handle_Deinit(/*@>6e45b1*/MicroMouseTemplate_DW./*@>6e8c11*/obj.ADCHandle, /*@>6d3169*/ADC_DMA_INTERRUPT_MODE, /*@>6da2a3*/1);
+/*@]*/
+    }
+}
+/* {E!d1234}End of Terminate for MATLABSystem: '<S51>/Analog to Digital Converter' */
+
+/* {S!d1236}Terminate for MATLABSystem: '<S47>/PWM Output' */
+/*@>6bbfa1*/if (!/*@<6bbf9f*//*@>6e4599*/MicroMouseTemplate_DW./*@>6e8c05*/obj_g.matlabCodegenIsDeleted) {
+    /*@>6e45ab*/MicroMouseTemplate_DW./*@>6e8c0e*/obj_g./*@>6e8bf9*/matlabCodegenIsDeleted/*@>6bbf9e*/ = /*@>6d316e*/true;
+    /*@>6bbfa7*/if ((/*@>6e45bd*/MicroMouseTemplate_DW./*@>6e8c17*/obj_g.isInitialized/*@>6bbfa6*/ == /*@>6d318c*/1)/*@>6bbfd0*/ && /*@>6e45c3*/MicroMouseTemplate_DW./*@>6e8c1a*/obj_g.isSetupComplete) {
+/*@[6c42b1*/
+        /*@>6e148d*/disableCounter(/*@>6e45cf*/MicroMouseTemplate_DW./*@>6e8c20*/obj_g.TimerHandle);
+/*@]*/
+/*@[6c42b2*/
+        /*@>6e148f*/disableTimerInterrupts(/*@>6e45e1*/MicroMouseTemplate_DW./*@>6e8c29*/obj_g.TimerHandle, /*@>6da2b6*/0);
+/*@]*/
+/*@[6c42b3*/
+        /*@>6e1491*/disableTimerChannel1(/*@>6e45ed*/MicroMouseTemplate_DW./*@>6e8c2f*/obj_g.TimerHandle, /*@>6d3188*/ENABLE_CH);
+/*@]*/
+/*@[6c42b4*/
+        /*@>6e1493*/disableTimerChannel2(/*@>6e45f9*/MicroMouseTemplate_DW./*@>6e8c35*/obj_g.TimerHandle, /*@>6d318b*/ENABLE_CH);
+/*@]*/
+    }
+}
+/* {E!d1236}End of Terminate for MATLABSystem: '<S47>/PWM Output' */
+
+/* {S!d1238}Terminate for MATLABSystem: '<S45>/PWM Output' */
+/*@>6bbfe1*/if (!/*@<6bbfdf*//*@>6e45b7*/MicroMouseTemplate_DW./*@>6e8c14*/obj_n.matlabCodegenIsDeleted) {
+    /*@>6e45c9*/MicroMouseTemplate_DW./*@>6e8c1d*/obj_n./*@>6e8bfc*/matlabCodegenIsDeleted/*@>6bbfde*/ = /*@>6d318f*/true;
+    /*@>6bbfe7*/if ((/*@>6e45d5*/MicroMouseTemplate_DW./*@>6e8c23*/obj_n.isInitialized/*@>6bbfe6*/ == /*@>6d31ad*/1)/*@>6bc010*/ && /*@>6e45db*/MicroMouseTemplate_DW./*@>6e8c26*/obj_n.isSetupComplete) {
+/*@[6c42b5*/
+        /*@>6e1495*/disableCounter(/*@>6e45e7*/MicroMouseTemplate_DW./*@>6e8c2c*/obj_n.TimerHandle);
+/*@]*/
+/*@[6c42b6*/
+        /*@>6e1497*/disableTimerInterrupts(/*@>6e45f3*/MicroMouseTemplate_DW./*@>6e8c32*/obj_n.TimerHandle, /*@>6da2c3*/0);
+/*@]*/
+/*@[6c42b7*/
+        /*@>6e1499*/disableTimerChannel3(/*@>6e45ff*/MicroMouseTemplate_DW./*@>6e8c38*/obj_n.TimerHandle, /*@>6d31a9*/ENABLE_CH);
+/*@]*/
+/*@[6c42b8*/
+        /*@>6e149b*/disableTimerChannel4(/*@>6e4605*/MicroMouseTemplate_DW./*@>6e8c3b*/obj_n.TimerHandle, /*@>6d31ac*/ENABLE_CH);
+/*@]*/
+    }
+}
+/* {E!d1238}End of Terminate for MATLABSystem: '<S45>/PWM Output' */
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 5, fcnProtoType)>
+%endfunction

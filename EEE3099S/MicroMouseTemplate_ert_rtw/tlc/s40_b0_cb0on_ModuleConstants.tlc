@@ -1,0 +1,13 @@
+%implements s40_b0_cb0on_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for Chart: '<Root>/HelloMicroMouse!' */
+#define MicroMouseTemplat_IN_SW1pressed ((uint8_T)1U)
+#define MicroMouseTemplat_IN_SW2pressed ((uint8_T)2U)
+#define MicroMouseTemplate_IN_Left ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Left1 ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Stop ((uint8_T)2U)
+#define Micro_IN_WaitUntilButtonPressed ((uint8_T)3U)
+%endfunction

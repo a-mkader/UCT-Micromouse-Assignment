@@ -1,0 +1,296 @@
+%implements s40_b0_k5fsn_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(30, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(30, "Start", "Body")>\
+/*@>6cc3eb*/for (/*@>6ec67a*/i = /*@>6ec679*/0; /*@>6ec684*/i < /*@>6ec682*/9; /*@>6ec680*/i/*@>6ec688*/++) {
+    /* {S!d2486}Start for DataStoreMemory: '<S6>/Data Store Memory' */
+    /*@>6d48ca*/ADC1s/*@>6cc3e2*/[/*@>6d48ac*/i]/*@>6cc3e1*/ = /*@>6e79ad*/MicroMouseTemplate_P./*@>6ec805*/DataStoreMemory_InitialValue_p;
+    /* {S!d2488}Start for DataStoreMemory: '<S6>/Data Store Memory1' */
+    /*@>6d48cc*/ADC_H/*@>6cc3fa*/[/*@>6d48b5*/i]/*@>6cc3f9*/ = /*@>6e79b3*/MicroMouseTemplate_P./*@>6ec808*/DataStoreMemory1_InitialValue_p;
+    /* {S!d2490}Start for DataStoreMemory: '<S6>/Data Store Memory2' */
+    /*@>6d48ce*/ADC_L/*@>6cc412*/[/*@>6d48b9*/i]/*@>6cc411*/ = /*@>6e79b9*/MicroMouseTemplate_P./*@>6ec80b*/DataStoreMemory2_InitialValue_p;
+}
+/*@>6cc433*/for (/*@>6ec669*/i = /*@>6ec668*/0; /*@>6ec673*/i < /*@>6ec671*/8; /*@>6ec66f*/i/*@>6ec689*/++) {
+    /* {S!d2492}Start for DataStoreMemory: '<S1>/Data Store Memory' */
+    /*@>6d48d0*/Detections/*@>6cc42a*/[/*@>6d48bd*/i]/*@>6cc429*/ = /*@>6e79c5*/MicroMouseTemplate_P./*@>6ec811*/DataStoreMemory_InitialValue_p4;
+    /* {S!d2494}Start for DataStoreMemory: '<S1>/Data Store Memory1' */
+    /*@>6d48d2*/Thresholds/*@>6cc442*/[/*@>6d48c6*/i]/*@>6cc441*/ = /*@>6e79d1*/MicroMouseTemplate_P./*@>6ec817*/DataStoreMemory1_InitialValue_j;
+}
+/* {S!d2496}Start for DataStoreMemory: '<S1>/Data Store Memory2' */
+/*@>6d47de*/currTicksRS/*@>6bcdec*/ = /*@>6e79bf*/MicroMouseTemplate_P./*@>6ec80e*/DataStoreMemory2_InitialValue;
+/* {S!d2498}Start for DataStoreMemory: '<S1>/Data Store Memory4' */
+/*@>6d47e2*/currTicksLS/*@>6bcdee*/ = /*@>6e79cb*/MicroMouseTemplate_P./*@>6ec814*/DataStoreMemory4_InitialValue;
+/* {S!d2500}Start for If: '<S5>/If1' */
+/*@>6e7bae*/MicroMouseTemplate_DW./*@>6ec85c*/If1_ActiveSubsystem/*@>6bcdf0*/ = /*@>6ec658*/-1;
+/* {S!d2502}Start for DataStoreMemory: '<S7>/Data Store Memory' */
+/*@>6d48d4*/IMU_Accel/*@>6d30ee*/[/*@>6d48dc*/0]/*@>6d30ed*/ = /*@>6e79d7*/MicroMouseTemplate_P./*@>6ec81a*/DataStoreMemory_InitialValue;
+/* {S!d2504}Start for DataStoreMemory: '<S7>/Data Store Memory1' */
+/*@>6d48d8*/IMU_Gyro/*@>6d30f6*/[/*@>6d48dd*/0]/*@>6d30f5*/ = /*@>6e79dd*/MicroMouseTemplate_P./*@>6ec81d*/DataStoreMemory1_InitialValue;
+/* {S!d2506}Start for DataStoreMemory: '<S7>/Data Store Memory' */
+/*@>6d48de*/IMU_Accel/*@>6d3101*/[/*@>6d48e6*/1]/*@>6d3100*/ = /*@>6e79e3*/MicroMouseTemplate_P./*@>6ec820*/DataStoreMemory_InitialValue;
+/* {S!d2508}Start for DataStoreMemory: '<S7>/Data Store Memory1' */
+/*@>6d48e2*/IMU_Gyro/*@>6d3109*/[/*@>6d48e7*/1]/*@>6d3108*/ = /*@>6e79e9*/MicroMouseTemplate_P./*@>6ec823*/DataStoreMemory1_InitialValue;
+/* {S!d2510}Start for DataStoreMemory: '<S7>/Data Store Memory' */
+/*@>6d48e8*/IMU_Accel/*@>6d3114*/[/*@>6d48f0*/2]/*@>6d3113*/ = /*@>6e79ef*/MicroMouseTemplate_P./*@>6ec826*/DataStoreMemory_InitialValue;
+/* {S!d2512}Start for DataStoreMemory: '<S7>/Data Store Memory1' */
+/*@>6d48ec*/IMU_Gyro/*@>6d311c*/[/*@>6d48f1*/2]/*@>6d311b*/ = /*@>6e79f5*/MicroMouseTemplate_P./*@>6ec829*/DataStoreMemory1_InitialValue;
+%<SLibCGIRDumpSystemUserCode(30, "Start", "Trailer")>\
+%<SLibCGIRDumpSystemUserCode(30, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(30, "Initialize", "Body")>\
+/* {S!d2477}SystemInitialize for IfAction SubSystem: '<S5>/If Action Subsystem' */
+/* {S!d2514}SystemInitialize for SignalConversion generated from: '<S35>/rightWheel' incorporates:
+ *  Outport: '<S35>/Out1'
+ */
+/*@>6e78af*/MicroMouseTemplate_B./*@>6ec7f9*/rightWheel_c/*@>6bce9d*/ = /*@>6e79fb*/MicroMouseTemplate_P./*@>6ec82c*/Out1_Y0_o;
+/* {E!d2477}End of SystemInitialize for SubSystem: '<S5>/If Action Subsystem' */
+
+/* {S!d2479}SystemInitialize for IfAction SubSystem: '<S5>/If Action Subsystem2' */
+/* {S!d2516}SystemInitialize for SignalConversion generated from: '<S37>/rightWheel' incorporates:
+ *  Outport: '<S37>/Out1'
+ */
+/*@>6e78b5*/MicroMouseTemplate_B./*@>6ec7fc*/rightWheel/*@>6bcea2*/ = /*@>6e7a01*/MicroMouseTemplate_P./*@>6ec82f*/Out1_Y0_m;
+/* {E!d2479}End of SystemInitialize for SubSystem: '<S5>/If Action Subsystem2' */
+
+/* {S!d2481}SystemInitialize for IfAction SubSystem: '<S5>/If Action Subsystem1' */
+/* {S!d2518}SystemInitialize for SignalConversion generated from: '<S36>/leftWheel' incorporates:
+ *  Outport: '<S36>/Out1'
+ */
+/*@>6e78bb*/MicroMouseTemplate_B./*@>6ec7ff*/leftWheel_d/*@>6bcea7*/ = /*@>6e7a07*/MicroMouseTemplate_P./*@>6ec832*/Out1_Y0;
+/* {E!d2481}End of SystemInitialize for SubSystem: '<S5>/If Action Subsystem1' */
+
+/* {S!d2483}SystemInitialize for IfAction SubSystem: '<S5>/If Action Subsystem4' */
+/* {S!d2520}SystemInitialize for SignalConversion generated from: '<S38>/leftWheel' incorporates:
+ *  Outport: '<S38>/Out1'
+ */
+/*@>6e78c1*/MicroMouseTemplate_B./*@>6ec802*/leftWheel/*@>6bceac*/ = /*@>6e7a0d*/MicroMouseTemplate_P./*@>6ec835*/Out1_Y0_l;
+/* {E!d2483}End of SystemInitialize for SubSystem: '<S5>/If Action Subsystem4' */
+
+/* {S!d2522}Start for MATLABSystem: '<S51>/Analog to Digital Converter' */
+/*@>6e7bb4*/MicroMouseTemplate_DW./*@>6ec85f*/obj./*@>6ec7db*/isInitialized/*@>6bced8*/ = /*@>6ec65b*/0;
+/*@>6e7bba*/MicroMouseTemplate_DW./*@>6ec862*/obj./*@>6ec7de*/matlabCodegenIsDeleted/*@>6bcedb*/ = /*@>6d483b*/false;
+/*@[6c516a*/
+/*@[6eab00*/%<(SLibCGCallSubFcn("MicroMouseTemp_SystemCore_setup", ["&/*@>6ec90d*/MicroMouseTemplate_DW./*@>6ec90c*/obj"], 2, 6, 0))>/*@]*/;
+/*@]*/
+/*@[6c516b*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea6ff*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ec950*/MicroMouseTemplate_DW./*@>6ec94f*/MATLABSystem2_ci", "&/*@>6ec961*/MicroMouseTemplate_P./*@>6ec960*/MATLABSystem2_ci"], 19, 5, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c516c*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[20], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem3_Init",20,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea700*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem3_Init", ["%<_modelSS>", "&/*@>6ec9a4*/MicroMouseTemplate_DW./*@>6ec9a3*/MATLABSystem4", "&/*@>6ec9b5*/MicroMouseTemplate_P./*@>6ec9b4*/MATLABSystem4"], 20, 1, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[20]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c516d*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea701*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ec9f8*/MicroMouseTemplate_DW./*@>6ec9f7*/MATLABSystem1", "&/*@>6eca09*/MicroMouseTemplate_P./*@>6eca08*/MATLABSystem1"], 19, 0, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c516e*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea702*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6eca4c*/MicroMouseTemplate_DW./*@>6eca4b*/MATLABSystem1_ci", "&/*@>6eca5d*/MicroMouseTemplate_P./*@>6eca5c*/MATLABSystem1_ci"], 19, 4, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c516f*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea703*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecaa0*/MicroMouseTemplate_DW./*@>6eca9f*/MATLABSystem3_c", "&/*@>6ecab1*/MicroMouseTemplate_P./*@>6ecab0*/MATLABSystem3_c"], 19, 6, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5170*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea704*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecaf4*/MicroMouseTemplate_DW./*@>6ecaf3*/MATLABSystem4_c", "&/*@>6ecb05*/MicroMouseTemplate_P./*@>6ecb04*/MATLABSystem4_c"], 19, 7, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5171*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea705*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecb48*/MicroMouseTemplate_DW./*@>6ecb47*/MATLABSystem5", "&/*@>6ecb59*/MicroMouseTemplate_P./*@>6ecb58*/MATLABSystem5"], 19, 8, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5172*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[20], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem3_Init",20,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea706*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem3_Init", ["%<_modelSS>", "&/*@>6ecb9c*/MicroMouseTemplate_DW./*@>6ecb9b*/MATLABSystem3", "&/*@>6ecbad*/MicroMouseTemplate_P./*@>6ecbac*/MATLABSystem3"], 20, 0, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[20]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5173*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea707*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecbf0*/MicroMouseTemplate_DW./*@>6ecbef*/MATLABSystem2", "&/*@>6ecc01*/MicroMouseTemplate_P./*@>6ecc00*/MATLABSystem2"], 19, 1, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5174*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea708*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecc44*/MicroMouseTemplate_DW./*@>6ecc43*/MATLABSystem6", "&/*@>6ecc55*/MicroMouseTemplate_P./*@>6ecc54*/MATLABSystem6"], 19, 9, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5175*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea709*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6ecc98*/MicroMouseTemplate_DW./*@>6ecc97*/MATLABSystem1_c", "&/*@>6ecca9*/MicroMouseTemplate_P./*@>6ecca8*/MATLABSystem1_c"], 19, 2, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+/*@[6c5176*/
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[19], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("MicroMouseTe_MATLABSystem1_Init",19,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[6ea70a*/",SLibCGIRGenReusableSysCall("MicroMouseTe_MATLABSystem1_Init", ["%<_modelSS>", "&/*@>6eccec*/MicroMouseTemplate_DW./*@>6ecceb*/MATLABSystem2_c", "&/*@>6eccfd*/MicroMouseTemplate_P./*@>6eccfc*/MATLABSystem2_c"], 19, 3, 4, 0, 19, 30),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[19]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@]*/
+
+/* {S!d2524}Start for MATLABSystem: '<S47>/PWM Output' */
+/*@>6e7c0e*/MicroMouseTemplate_DW./*@>6ec88c*/obj_g./*@>6ec7ea*/matlabCodegenIsDeleted/*@>6bcf26*/ = /*@>6d4851*/false;
+/*@>6e7c14*/MicroMouseTemplate_DW./*@>6ec88f*/obj_g./*@>6ec7e7*/isSetupComplete/*@>6bcf23*/ = /*@>6d484d*/false;
+/*@>6e7c1a*/MicroMouseTemplate_DW./*@>6ec892*/obj_g./*@>6ec7e4*/isInitialized/*@>6bcf20*/ = /*@>6ec65e*/1;
+/*@[6c5177*/
+/*@[6eab17*/%<(SLibCGCallSubFcn("MicroMous_PWMOutput_setupImpl_d", ["&/*@>6ecd0e*/MicroMouseTemplate_DW./*@>6ecd0d*/obj_g"], 2, 6, 1))>/*@]*/;
+/*@]*/
+/*@>6e7c26*/MicroMouseTemplate_DW./*@>6ec898*/obj_g./*@>6ec7e1*/isSetupComplete/*@>6bcf1d*/ = /*@>6d484b*/true;
+/* {S!d2526}Start for MATLABSystem: '<S45>/PWM Output' */
+/*@>6e7c2c*/MicroMouseTemplate_DW./*@>6ec89b*/obj_n./*@>6ec7f6*/matlabCodegenIsDeleted/*@>6bcf52*/ = /*@>6d4864*/false;
+/*@>6e7c32*/MicroMouseTemplate_DW./*@>6ec89e*/obj_n./*@>6ec7f3*/isSetupComplete/*@>6bcf4f*/ = /*@>6d4860*/false;
+/*@>6e7c38*/MicroMouseTemplate_DW./*@>6ec8a1*/obj_n./*@>6ec7f0*/isInitialized/*@>6bcf4c*/ = /*@>6ec661*/1;
+/*@[6c5178*/
+/*@[6eab2e*/%<(SLibCGCallSubFcn("MicroMouseT_PWMOutput_setupImpl", ["&/*@>6ecd1f*/MicroMouseTemplate_DW./*@>6ecd1e*/obj_n"], 2, 6, 2))>/*@]*/;
+/*@]*/
+/*@>6e7c44*/MicroMouseTemplate_DW./*@>6ec8a7*/obj_n./*@>6ec7ed*/isSetupComplete/*@>6bcf49*/ = /*@>6d485e*/true;
+%<SLibCGIRDumpSystemUserCode(30, "Initialize", "Trailer")>\
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedModelInitializeLocalVars", localVarDecl)>
+%endfunction
+%function ModelInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 6, fcnProtoType)>
+%endfunction

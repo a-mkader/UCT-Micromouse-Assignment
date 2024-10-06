@@ -1,0 +1,17 @@
+%implements s40_b0_3raun_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for Chart: '<Root>/HelloMicroMouse!' */
+#define MicroMouseTemplat_IN_TurnAround ((uint8_T)3U)
+#define MicroMouseTemplat_IN_WadeRight1 ((uint8_T)4U)
+#define MicroMouseTemplate_IN_Calibrate ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Forward ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Forward_c ((uint8_T)2U)
+#define MicroMouseTemplate_IN_On ((uint8_T)1U)
+#define MicroMouseTemplate_IN_Searching ((uint8_T)2U)
+#define MicroMouseTemplate_IN_Slow ((uint8_T)2U)
+#define MicroMouseTemplate_IN_WadeLeft ((uint8_T)3U)
+#define Micro_IN_WaitUntilButtonPressed ((uint8_T)3U)
+%endfunction

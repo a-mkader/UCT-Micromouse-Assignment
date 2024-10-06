@@ -1,0 +1,18 @@
+%implements s40_b0_kxhsn_0_PublicModuleTypes "C"
+
+%function PublicModuleTypes(block) Output
+
+#ifndef struct_tag_TL74IR3Rn74hKhfKckCIBC
+#define struct_tag_TL74IR3Rn74hKhfKckCIBC
+struct tag_TL74IR3Rn74hKhfKckCIBC
+{
+    int32_T isInitialized;
+    real_T InitialCondition;
+    real_T Buffer[25];
+};
+#endif /* struct_tag_TL74IR3Rn74hKhfKckCIBC */
+#ifndef typedef_CircularBuffer_MicroMouseTemp_T
+#define typedef_CircularBuffer_MicroMouseTemp_T
+typedef struct tag_TL74IR3Rn74hKhfKckCIBC CircularBuffer_MicroMouseTemp_T;
+#endif /* typedef_CircularBuffer_MicroMouseTemp_T */
+%endfunction

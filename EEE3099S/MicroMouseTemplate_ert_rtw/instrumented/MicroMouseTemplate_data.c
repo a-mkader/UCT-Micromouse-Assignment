@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.16
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 14:35:19 2024
+ * C/C++ source code generated on : Sun Sep 22 09:37:57 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -41,6 +41,11 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   2109.5454545454545,
 
+  /* Variable: IR_LED_PERIOD
+   * Referenced by: '<S4>/Transport Delay1'
+   */
+  0.2,
+
   /* Variable: LSThreshConv
    * Referenced by: '<Root>/Constant4'
    */
@@ -61,10 +66,25 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   1.0,
 
+  /* Expression: 0
+   * Referenced by: '<S4>/Transport Delay1'
+   */
+  0.0,
+
   /* Expression: 1
    * Referenced by: '<S4>/Constant'
    */
   1.0,
+
+  /* Expression: 1
+   * Referenced by: '<S34>/Constant'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<S34>/Unit Delay'
+   */
+  0.0,
 
   /* Computed Parameter: DataStoreMemory2_InitialValue
    * Referenced by: '<S1>/Data Store Memory2'

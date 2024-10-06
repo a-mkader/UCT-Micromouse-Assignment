@@ -1,0 +1,143 @@
+%implements s40_b0_y37qn_Functions "C"
+
+%function MicroMouseTemp_SystemCore_setup_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+ADC_Type_T adcStructLoc;
+/*@>6d45bb*/obj->/*@>6ea81f*/isSetupComplete/*@>3e4623*/ = /*@>6d45c4*/false;
+/* Start for MATLABSystem: '<S51>/Analog to Digital Converter' */
+/*@>6d45be*/obj->/*@>6ea822*/isInitialized/*@>3e464a*/ = /*@>6ea7bf*/1;
+/*@[6c4f1b*/
+/*@>6d4603*/adcStructLoc./*@>6ea846*/InternalBufferPtr/*@>65c460*/ = /*@>6e40b2*/(void*)(&/*@>6d45ea*/obj->/*@>6ea843*/ADCInternalBuffer/*@>6d2a1d*/[/*@>6d4606*/0]);
+/*@]*/
+/*@>6d45d6*/adcStructLoc./*@>6ea837*/InjectedNoOfConversion/*@>65c2dd*/ = /*@>6ea7c2*/0U;
+/*@>6d45d3*/adcStructLoc./*@>6ea834*/peripheralPtr/*@>65c2d5*/ = /*@>6d45f4*/ADC2;
+/*@>6d45d0*/adcStructLoc./*@>6ea831*/dmaPeripheralPtr/*@>65c2d1*/ = /*@>6d45f5*/DMA1;
+/*@>6d45cd*/adcStructLoc./*@>6ea82e*/dmastream/*@>65c2cd*/ = /*@>6d45f6*/LL_DMA_CHANNEL_2;
+/*@>6d45ca*/adcStructLoc./*@>6ea82b*/DataTransferMode/*@>65c2c9*/ = /*@>6d45f7*/ADC_DR_TRANSFER;
+/*@>6d45c7*/adcStructLoc./*@>6ea828*/DmaTransferMode/*@>65c2c5*/ = /*@>6d45f8*/ADC_DMA_TRANSFER_UNLIMITED;
+/*@>6d45d8*/adcStructLoc./*@>6ea83a*/InternalBufferSize/*@>65c30d*/ = /*@>6d45fe*/9U;
+/*@>6d45db*/adcStructLoc./*@>6ea83d*/RegularNoOfConversion/*@>65c31a*/ = /*@>6ea7c5*/9U;
+/*@[6c4f1c*/
+/*@>6d45ec*/obj->/*@>6ea840*/ADCHandle/*@>65c327*/ = /*@>6e40b4*/ADC_Handle_Init(&/*@>6d45df*/adcStructLoc, /*@>6d45f9*/ADC_DMA_INTERRUPT_MODE, /*@>6dbf8c*/1, /*@>6d45fa*/ADC_TRIGGER_AND_READ, /*@>6d45fb*/LL_ADC_REG_SEQ_SCAN_ENABLE_9RANKS);
+/*@]*/
+/*@[6c4f1d*/
+/*@>6e40b6*/enableADCAutomaticCalibrationOffset(/*@>6d45ee*/obj->ADCHandle, /*@>6dbf90*/2);
+/*@]*/
+/*@[6c4f1e*/
+/*@>6e40b8*/enableADC(/*@>6d45f0*/obj->ADCHandle);
+/*@]*/
+/*@[6c4f1f*/
+/*@>6e40ba*/startADCConversionForExternalTrigger(/*@>6d45f2*/obj->ADCHandle, /*@>6dbf95*/1);
+/*@]*/
+/*@>6d45c1*/obj->/*@>6ea825*/isSetupComplete/*@>3e46ca*/ = /*@>6d45c5*/true;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void MicroMouseTemp_SystemCore_setup(\
+%assign comma = ""
+%<comma>stm32cube_blocks_AnalogInput__T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function MicroMous_PWMOutput_setupImpl_d_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+TIM_Type_T b;
+boolean_T isSlaveModeTriggerEnabled;
+/* {S!d248}Start for MATLABSystem: '<S47>/PWM Output' */
+/*@>6d4587*/b./*@>6ea8ad*/PeripheralPtr/*@>656f9a*/ = /*@>6d45a2*/TIM3;
+/*@>6d4584*/b./*@>6ea8aa*/isCenterAlignedMode/*@>656f96*/ = /*@>6d458b*/false;
+/* {S!d250}Start for MATLABSystem: '<S47>/PWM Output' */
+/*@>6d4581*/b./*@>6ea8a7*/repetitionCounter/*@>656f92*/ = /*@>6ea86a*/0U;
+/*@[6c4f15*/
+/*@>6d4598*/obj->/*@>6ea8b0*/TimerHandle/*@>656fa9*/ = /*@>6e40a6*/Timer_Handle_Init(&/*@>6d459a*/b);
+/*@]*/
+/*@[6c4f16*/
+/*@>6e40a8*/enableTimerInterrupts(/*@>6d459c*/obj->TimerHandle, /*@>6dbf5b*/0);
+/*@]*/
+/*@[6c4f17*/
+/*@>6e40aa*/enableTimerChannel1(/*@>6d4578*/obj->TimerHandle, /*@>6d45a3*/ENABLE_CH);
+/*@]*/
+/*@[6c4f18*/
+/*@>6e40ac*/enableTimerChannel2(/*@>6d457b*/obj->TimerHandle, /*@>6d45a4*/ENABLE_CH);
+/*@]*/
+/*@[6c4f19*/
+/*@>6d458f*/isSlaveModeTriggerEnabled/*@>656fd9*/ = /*@>6e40ae*/isSlaveTriggerModeEnabled(/*@>6d459e*/obj->TimerHandle);
+/*@]*/
+/*@>656fee*/if (!/*@<656fe4*//*@>6d4592*/isSlaveModeTriggerEnabled) {
+    /* {S!d252}Start for MATLABSystem: '<S47>/PWM Output' */
+/*@[6c4f1a*/
+    /*@>6e40b0*/enableCounter(/*@>6d45a0*/obj->TimerHandle, /*@>6d4596*/false);
+/*@]*/
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void MicroMous_PWMOutput_setupImpl_d(\
+%assign comma = ""
+%<comma>stm32cube_blocks_PWMOutput_Mi_T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function MicroMouseT_PWMOutput_setupImpl_Fcn2(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+TIM_Type_T b;
+boolean_T isSlaveModeTriggerEnabled;
+/* {S!d242}Start for MATLABSystem: '<S45>/PWM Output' */
+/*@>6d454b*/b./*@>6ea920*/PeripheralPtr/*@>651904*/ = /*@>6d4566*/TIM3;
+/*@>6d4548*/b./*@>6ea91d*/isCenterAlignedMode/*@>651900*/ = /*@>6d454f*/false;
+/* {S!d244}Start for MATLABSystem: '<S45>/PWM Output' */
+/*@>6d4545*/b./*@>6ea91a*/repetitionCounter/*@>6518fc*/ = /*@>6ea8dd*/0U;
+/*@[6c4f0f*/
+/*@>6d455c*/obj->/*@>6ea923*/TimerHandle/*@>651913*/ = /*@>6e409a*/Timer_Handle_Init(&/*@>6d455e*/b);
+/*@]*/
+/*@[6c4f10*/
+/*@>6e409c*/enableTimerInterrupts(/*@>6d4560*/obj->TimerHandle, /*@>6dbf24*/0);
+/*@]*/
+/*@[6c4f11*/
+/*@>6e409e*/enableTimerChannel3(/*@>6d453c*/obj->TimerHandle, /*@>6d4567*/ENABLE_CH);
+/*@]*/
+/*@[6c4f12*/
+/*@>6e40a0*/enableTimerChannel4(/*@>6d453f*/obj->TimerHandle, /*@>6d4568*/ENABLE_CH);
+/*@]*/
+/*@[6c4f13*/
+/*@>6d4553*/isSlaveModeTriggerEnabled/*@>651943*/ = /*@>6e40a2*/isSlaveTriggerModeEnabled(/*@>6d4562*/obj->TimerHandle);
+/*@]*/
+/*@>651958*/if (!/*@<65194e*//*@>6d4556*/isSlaveModeTriggerEnabled) {
+    /* {S!d246}Start for MATLABSystem: '<S45>/PWM Output' */
+/*@[6c4f14*/
+    /*@>6e40a4*/enableCounter(/*@>6d4564*/obj->TimerHandle, /*@>6d455a*/false);
+/*@]*/
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void MicroMouseT_PWMOutput_setupImpl(\
+%assign comma = ""
+%<comma>stm32cube_blocks_PWMOutput_Mi_T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 2, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.16
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 14:35:19 2024
+ * C/C++ source code generated on : Sun Sep 22 09:37:57 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -82,9 +82,11 @@ typedef struct {
   uint16_T Flip[8];                    /* '<S6>/Flip' */
   uint16_T rtb_CastToDouble_m[8];
   GPIO_TypeDef * portNameLoc;
+  real_T Sum;                          /* '<S34>/Sum' */
   real_T maxV;
   real_T maxV_c;
   real_T minV;
+  real_T maxV_k;
   int8_T rightWheel;                   /* '<S37>/rightWheel' */
   int8_T rightWheel_c;                 /* '<S35>/rightWheel' */
   int8_T leftWheel;                    /* '<S38>/leftWheel' */
@@ -110,16 +112,39 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
+  struct {
+    real_T modelTStart;
+    real_T TUbufferArea[2048];
+  } TransportDelay1_RWORK;             /* '<S4>/Transport Delay1' */
+
   stm32cube_blocks_AnalogInput__T obj; /* '<S51>/Analog to Digital Converter' */
+  struct {
+    int_T Tail;
+    int_T Head;
+    int_T Last;
+    int_T CircularBufSize;
+  } TransportDelay1_IWORK;             /* '<S4>/Transport Delay1' */
+
   stm32cube_blocks_PWMOutput_Mi_T obj_g;/* '<S47>/PWM Output' */
   stm32cube_blocks_PWMOutput_Mi_T obj_n;/* '<S45>/PWM Output' */
+  real_T UnitDelay_DSTATE;             /* '<S34>/Unit Delay' */
+  struct {
+    void *TUbufferPtrs[2];
+  } TransportDelay1_PWORK;             /* '<S4>/Transport Delay1' */
+
   struct {
     uint_T is_On:3;                    /* '<Root>/HelloMicroMouse!' */
+    uint_T is_Searching:3;             /* '<Root>/HelloMicroMouse!' */
     uint_T is_c2_MicroMouseTemplate:2; /* '<Root>/HelloMicroMouse!' */
     uint_T is_active_c2_MicroMouseTemplate:1;/* '<Root>/HelloMicroMouse!' */
   } bitsForTID1;
 
+  uint16_T FWD_LS_Thresh;              /* '<Root>/HelloMicroMouse!' */
+  uint16_T LS_Thresh;                  /* '<Root>/HelloMicroMouse!' */
+  uint16_T RS_Thresh;                  /* '<Root>/HelloMicroMouse!' */
+  uint16_T FWD_RS_Thresh;              /* '<Root>/HelloMicroMouse!' */
   int8_T If1_ActiveSubsystem;          /* '<S5>/If1' */
+  uint8_T temporalCounter_i1;          /* '<Root>/HelloMicroMouse!' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem6;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem5;/* '<S52>/MATLAB System1' */
   DW_MATLABSystem1_MicroMouseTe_T MATLABSystem4_c;/* '<S52>/MATLAB System1' */
@@ -162,6 +187,9 @@ struct P_MicroMouseTemplate_T_ {
   real_T FWDRSThreshConv;              /* Variable: FWDRSThreshConv
                                         * Referenced by: '<Root>/Constant3'
                                         */
+  real_T IR_LED_PERIOD;                /* Variable: IR_LED_PERIOD
+                                        * Referenced by: '<S4>/Transport Delay1'
+                                        */
   real_T LSThreshConv;                 /* Variable: LSThreshConv
                                         * Referenced by: '<Root>/Constant4'
                                         */
@@ -174,8 +202,17 @@ struct P_MicroMouseTemplate_T_ {
   real_T Constant_Value_i;             /* Expression: 1
                                         * Referenced by: '<S8>/Constant'
                                         */
+  real_T TransportDelay1_InitOutput;   /* Expression: 0
+                                        * Referenced by: '<S4>/Transport Delay1'
+                                        */
   real_T Constant_Value_m;             /* Expression: 1
                                         * Referenced by: '<S4>/Constant'
+                                        */
+  real_T Constant_Value_ir;            /* Expression: 1
+                                        * Referenced by: '<S34>/Constant'
+                                        */
+  real_T UnitDelay_InitialCondition;   /* Expression: 0
+                                        * Referenced by: '<S34>/Unit Delay'
                                         */
   int32_T DataStoreMemory2_InitialValue;
                             /* Computed Parameter: DataStoreMemory2_InitialValue
@@ -307,10 +344,6 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S34>/Constant' : Unused code path elimination
- * Block '<S34>/Sum' : Unused code path elimination
- * Block '<S34>/Unit Delay' : Unused code path elimination
- * Block '<S4>/Transport Delay1' : Unused code path elimination
  * Block '<S49>/Cast1' : Eliminate redundant data type conversion
  * Block '<S49>/Cast3' : Eliminate redundant data type conversion
  * Block '<S54>/Rate Transition' : Eliminated since input and output rates are identical
