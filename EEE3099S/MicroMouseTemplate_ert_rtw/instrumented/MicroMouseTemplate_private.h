@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.16
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 14:35:19 2024
+ * C/C++ source code generated on : Thu Oct 17 12:52:41 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,6 +20,8 @@
 #ifndef MicroMouseTemplate_private_h_
 #define MicroMouseTemplate_private_h_
 #include "rtwtypes.h"
+#include <float.h>
+#include <math.h>
 #include "MicroMouseTemplate.h"
 #include "MicroMouseTemplate_types.h"
 #include "rtw_continuous.h"
@@ -38,14 +40,27 @@
 #define rtmSetTPtr(rtm, val)           ((rtm)->Timing.t = (val))
 #endif
 
-extern void MicroMouseTe_MATLABSystem1_Init(DW_MATLABSystem1_MicroMouseTe_T
-  *localDW, P_MATLABSystem1_MicroMouseTem_T *localP);
-extern void MicroMouseTemplat_MATLABSystem1(real_T rtu_0,
+extern real_T rt_roundd(real_T u);
+real_T rt_TDelayInterpolate(
+  real_T tMinusDelay,                 /* tMinusDelay = currentSimTime - delay */
+  real_T tStart,
+  real_T *uBuf,
+  int_T bufSz,
+  int_T *lastIdx,
+  int_T oldestIdx,
+  int_T newIdx,
+  real_T initOutput,
+  boolean_T discrete,
+  boolean_T minorStepAndTAtLastMajorOutput)
+  ;
+extern void MicroMou_MATLABSystem1_Init(DW_MATLABSystem1_MicroMouseTe_T *localDW,
+  P_MATLABSystem1_MicroMouseTem_T *localP);
+extern void MicroMouseTem_MATLABSystem1(real_T rtu_0,
   B_MATLABSystem1_MicroMouseTem_T *localB, DW_MATLABSystem1_MicroMouseTe_T
   *localDW, P_MATLABSystem1_MicroMouseTem_T *localP);
-extern void MicroMouseTe_MATLABSystem3_Init(DW_MATLABSystem3_MicroMouseTe_T
-  *localDW, P_MATLABSystem3_MicroMouseTem_T *localP);
-extern void MicroMouseTemplat_MATLABSystem3(real_T rtu_0,
+extern void MicroMou_MATLABSystem3_Init(DW_MATLABSystem3_MicroMouseTe_T *localDW,
+  P_MATLABSystem3_MicroMouseTem_T *localP);
+extern void MicroMouseTem_MATLABSystem3(real_T rtu_0,
   B_MATLABSystem3_MicroMouseTem_T *localB, DW_MATLABSystem3_MicroMouseTe_T
   *localDW, P_MATLABSystem3_MicroMouseTem_T *localP);
 

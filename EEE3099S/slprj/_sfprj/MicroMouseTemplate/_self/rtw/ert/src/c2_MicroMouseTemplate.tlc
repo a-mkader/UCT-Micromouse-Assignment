@@ -7,11 +7,235 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   3 \
+    NumChartData   37 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "DownLSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "DownLSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "DownRSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "DownRSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThreshMax"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThreshMax"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThreshMin"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThreshMin"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThreshMax"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThreshMax"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThreshMin"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThreshMin"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThreshMax"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThreshMax"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThreshMin"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThreshMin"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThreshMax"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThreshMax"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThreshMin"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThreshMin"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "MOTRSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MOTRSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "MOTLSThresh"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MOTLSThresh"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThresh4"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThresh4"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThresh4"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThresh4"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThresh4"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThresh4"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThresh4"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThresh4"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThresh1"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThresh1"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThresh3"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThresh3"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDLSThresh2"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDLSThresh2"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThresh1"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThresh1"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThresh2"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThresh2"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "FWDRSThresh3"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "FWDRSThresh3"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThresh1"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThresh1"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThresh2"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThresh2"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "LSThresh3"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LSThresh3"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThresh1"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThresh1"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThresh2"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThresh2"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "RSThresh3"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RSThresh3"\
+      SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_active_c2_MicroMouseTemplate"\
@@ -28,10 +252,24 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_On"\
+      Name         "is_Calibrated"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "On"\
+      Path         "Calibrated"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_FollowBlackLine"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "FollowBlackLine"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i1"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
       SrcLocation  ""\
     }\
   }

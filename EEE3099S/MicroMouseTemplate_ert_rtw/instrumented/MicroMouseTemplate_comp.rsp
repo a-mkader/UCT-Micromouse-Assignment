@@ -1,8 +1,8 @@
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S
 -IC:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/shared/supportpackages/stm32/include
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseTemplate_ert_rtw/instrumented
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Core/Inc
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Core/Src/instrumented
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseTemplate_ert_rtw/instrumented
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Core/Inc
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Core/Src/instrumented
 -IC:/Program\ Files/MATLAB/R2024a/extern/include
 -IC:/Program\ Files/MATLAB/R2024a/simulink/include
 -IC:/Program\ Files/MATLAB/R2024a/rtw/c/src
@@ -15,14 +15,14 @@
 -IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis.instrset/CMSIS/Core/Include
 -IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include
 -IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include/dsp
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Device/ST/STM32L4xx/Include
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Include
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/instrumented
--IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/EEE3099S/Project/EEE3099S/MicroMouseProgramming/USB_DEVICE/Target/instrumented
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/Drivers/CMSIS/Include
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/USB_DEVICE/App/instrumented
+-IC:/Users/zaino/OneDrive\ -\ University\ of\ Cape\ Town/Documents/UCT-Micromouse-Assignment-Abdul/EEE3099S/MicroMouseProgramming/USB_DEVICE/Target/instrumented
 -I../../Core/Inc
 -I../../USB_DEVICE/App
 -I../../USB_DEVICE/Target

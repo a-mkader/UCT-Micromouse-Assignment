@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.16
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 14:35:19 2024
+ * C/C++ source code generated on : Thu Oct 17 12:52:41 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -62,33 +62,82 @@ void code_profiling_atomic_read_store(uint32_T sectionId)
 }
 
 volatile int IsrOverrun = 0;
-static boolean_T OverrunFlag = 0;
+boolean_T isRateRunning[3] = { 0, 0, 0 };
+
+boolean_T need2runFlags[3] = { 0, 0, 0 };
+
 void rt_OneStep(void)
 {
-  /* Check for overrun. Protect OverrunFlag against preemption */
-  if (OverrunFlag++) {
+  boolean_T eventFlags[3];
+
+  /* Check base rate for overrun */
+  if (isRateRunning[0]++) {
     IsrOverrun = 1;
 
     /* PROFILE_TASK_OVERRUN */
-    OverrunFlag--;
+    isRateRunning[0]--;                /* allow future iterations to succeed*/
     return;
   }
 
+  /*
+   * For a bare-board target (i.e., no operating system), the rates
+   * that execute this base step are buffered locally to allow for
+   * overlapping preemption.
+   */
+  MicroMouseTemplate_SetEventsForThisBaseStep(eventFlags);
   __enable_irq();
   taskTimeStart_MicroMouseTemplate(2U);
-  MicroMouseTemplate_step();
+  MicroMouseTemplate_step0();
   taskTimeEnd_MicroMouseTemplate(2U);
 
   /* Get model outputs here */
   __disable_irq();
-  OverrunFlag--;
+  isRateRunning[0]--;
+  if (eventFlags[2]) {
+    if (need2runFlags[2]++) {
+      IsrOverrun = 1;
+      need2runFlags[2]--;              /* allow future iterations to succeed*/
+
+      /* PROFILE_TASK_OVERRUN 1 */
+      return;
+    }
+  }
+
+  if (need2runFlags[2]) {
+    if (isRateRunning[1]) {
+      /* Yield to higher priority*/
+      return;
+    }
+
+    isRateRunning[2]++;
+    __enable_irq();
+
+    /* Step the model for subrate "2" */
+    switch (2)
+    {
+     case 2 :
+      taskTimeStart_MicroMouseTemplate(3U);
+      MicroMouseTemplate_step2();
+      taskTimeEnd_MicroMouseTemplate(3U);
+
+      /* Get model outputs here */
+      break;
+
+     default :
+      break;
+    }
+
+    __disable_irq();
+    need2runFlags[2]--;
+    isRateRunning[2]--;
+  }
 }
 
 volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(int argc, char **argv)
 {
-  float modelBaseRate = 0.1;
+  float modelBaseRate = 0.025;
   float systemClock = 80.0;
 
   /* Initialize variables */
@@ -137,9 +186,9 @@ int main(int argc, char **argv)
   }
 
   /* Terminate model */
-  taskTimeStart_MicroMouseTemplate(3U);
+  taskTimeStart_MicroMouseTemplate(4U);
   MicroMouseTemplate_terminate();
-  taskTimeEnd_MicroMouseTemplate(3U);
+  taskTimeEnd_MicroMouseTemplate(4U);
 
 #if !defined(MW_FREERTOS) && !defined(USE_RTX)
 

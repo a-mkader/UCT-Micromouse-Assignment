@@ -2,7 +2,7 @@
 ## Makefile generated for component 'MicroMouseTemplate'. 
 ## 
 ## Makefile     : MicroMouseTemplate.mk
-## Generated on : Thu Sep 19 14:35:26 2024
+## Generated on : Thu Oct 17 12:52:49 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/MicroMouseTemplate.elf
 ## Product type : executable
 ## 
@@ -23,7 +23,7 @@ MAKEFILE                  = MicroMouseTemplate.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2024a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2024a/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/zaino/ONEDRI~1/EEE3099S/Project/EEE3099S
+START_DIR                 = C:/Users/zaino/ONEDRI~1/DOCUME~1/UCT-MI~1/EEE3099S
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -212,11 +212,11 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ###########################################################################
 
 DEFINES_ = -DMW_TIM3_ENABLED=1 -DMW_ADC2_ENABLED=1 -DMW_ADC2_VAR=mw_adc2 -DMW_ADC2_DMA_ENABLED=DMA1_Channel2_IRQHandler -DMW_ADC2_DMA1_Channel2_TC_ENABLED=1 -DMW_ADC2_DMA_STREAM=2 -DMW_ADC2_DMA_BUFFER_SIZE=18 -DMW_STANDALONE_EXECUTION_PROFILER_ON -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L476xx -DMW_TIMEBASESOURCE=TIM1
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1
 DEFINES_CUSTOM = 
 DEFINES_OPTS = -DTID01EQ=1
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -D__FPU_PRESENT=1U -D__FPU_USED=1U -DSTACK_SIZE=64 -DRT
-DEFINES_STANDARD = -DMODEL=MicroMouseTemplate -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STANDARD = -DMODEL=MicroMouseTemplate -DNUMST=3 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
@@ -285,7 +285,7 @@ CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
 #---------------
 
 CPP_LDFLAGS_ = --specs=nano.specs
-CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\EEE3099S\Project\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
+CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\Documents\UCT-Micromouse-Assignment-Abdul\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
 
 CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 
@@ -294,7 +294,7 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 #------------------------------
 
 CPP_SHAREDLIB_LDFLAGS_ = --specs=nano.specs
-CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\EEE3099S\Project\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
+CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\Documents\UCT-Micromouse-Assignment-Abdul\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -303,7 +303,7 @@ CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPF
 #-----------
 
 LDFLAGS_ = --specs=nano.specs
-LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\EEE3099S\Project\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
+LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\Documents\UCT-Micromouse-Assignment-Abdul\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
 
 LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
 
@@ -328,7 +328,7 @@ MEX_CFLAGS += $(MEX_Compiler_BASIC)
 #--------------------------
 
 SHAREDLIB_LDFLAGS_ = --specs=nano.specs
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\EEE3099S\Project\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
+SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\zaino\OneDrive - University of Cape Town\Documents\UCT-Micromouse-Assignment-Abdul\EEE3099S\MicroMouseProgramming\STM32CubeIDE\STM32L476VETX_FLASH.ld"
 
 SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
