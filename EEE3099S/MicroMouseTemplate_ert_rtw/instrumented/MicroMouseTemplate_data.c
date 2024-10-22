@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouseTemplate'.
  *
- * Model version                  : 3.16
+ * Model version                  : 3.20
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Sep 19 14:35:19 2024
+ * C/C++ source code generated on : Thu Oct 17 12:52:41 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,35 +21,30 @@
 
 /* Block parameters (default storage) */
 P_MicroMouseTemplate_T MicroMouseTemplate_P = {
-  /* Variable: DownLSThreshConv
-   * Referenced by: '<Root>/Constant'
+  /* Variable: IR_LED_PERIOD
+   * Referenced by: '<S4>/Transport Delay1'
    */
-  3598.6363636363635,
+  0.05,
 
-  /* Variable: DownRSThreshConv
-   * Referenced by: '<Root>/Constant1'
+  /* Expression: 1
+   * Referenced by: '<S4>/Constant'
    */
-  3598.6363636363635,
+  1.0,
 
-  /* Variable: FWDLSThreshConv
-   * Referenced by: '<Root>/Constant2'
+  /* Expression: 0
+   * Referenced by: '<S4>/Transport Delay1'
    */
-  2109.5454545454545,
+  0.0,
 
-  /* Variable: FWDRSThreshConv
-   * Referenced by: '<Root>/Constant3'
+  /* Expression: 1
+   * Referenced by: '<S34>/Constant'
    */
-  2109.5454545454545,
+  1.0,
 
-  /* Variable: LSThreshConv
-   * Referenced by: '<Root>/Constant4'
+  /* Expression: 0
+   * Referenced by: '<S34>/Unit Delay'
    */
-  3722.727272727273,
-
-  /* Variable: RSThreshConv
-   * Referenced by: '<Root>/Constant5'
-   */
-  3722.727272727273,
+  0.0,
 
   /* Expression: 1
    * Referenced by: '<S5>/Constant'
@@ -58,11 +53,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Expression: 1
    * Referenced by: '<S8>/Constant'
-   */
-  1.0,
-
-  /* Expression: 1
-   * Referenced by: '<S4>/Constant'
    */
   1.0,
 
@@ -86,6 +76,11 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
    */
   0.0F,
 
+  /* Computed Parameter: DataStoreMemory1_InitialValue_j
+   * Referenced by: '<S1>/Data Store Memory1'
+   */
+  0U,
+
   /* Computed Parameter: Constant_Value_b
    * Referenced by: '<S49>/Constant'
    */
@@ -108,11 +103,6 @@ P_MicroMouseTemplate_T MicroMouseTemplate_P = {
 
   /* Computed Parameter: DataStoreMemory2_InitialValue_p
    * Referenced by: '<S6>/Data Store Memory2'
-   */
-  0U,
-
-  /* Computed Parameter: DataStoreMemory1_InitialValue_j
-   * Referenced by: '<S1>/Data Store Memory1'
    */
   0U,
 
